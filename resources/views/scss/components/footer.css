@@ -1,0 +1,120 @@
+.footer {
+  padding-top: 55px;
+}
+.footer__copyright {
+  padding: 31px 0;
+  border-top: 2px solid rgba(255, 255, 255, 0.06);
+}
+.footer__copyright p {
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%; /* 28px */
+}
+.footer__inner {
+  padding-bottom: 31px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer__col__item {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin-bottom: 24px;
+}
+.footer__col__item p, .footer__col__item span {
+  color: var(--color_white);
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%; /* 33.6px */
+}
+.footer__col__item span {
+  color: var(--color_gold);
+}
+.footer__col__item:last-child {
+  margin-bottom: 0;
+}
+.footer__col__contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.footer__col__title {
+  color: var(--color_gold);
+  font-family: Inter;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%; /* 50.4px */
+}
+.footer__col__btn {
+  padding: 27px 66px;
+  background: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  display: inline-flex;
+  color: var(--color_white);
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 135%; /* 27px */
+}
+.footer__col__btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+.footer__col__actions {
+  width: 39%;
+}
+.footer__col__actions p {
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 38px;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%; /* 28px */
+}
+.footer__address, .footer__phone, .footer__mail {
+  color: var(--color_white);
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+}
+.footer__address {
+  width: 50%;
+}
+.footer__phone, .footer__mail {
+  transition: all 0.2s linear;
+}
+.footer__phone:hover, .footer__mail:hover {
+  color: #636363;
+}
+.home-page .footer {
+  padding-top: 149px;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 15px;
+}
+.footer-socials__item {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.13);
+  transition: all 0.2s linear;
+}
+.footer-socials__item:hover {
+  background: rgba(255, 255, 255, 0.23);
+}/*# sourceMappingURL=footer.css.map */
