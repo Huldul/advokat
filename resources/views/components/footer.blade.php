@@ -1,6 +1,6 @@
 <div class="modal__wrapper" id="modal--2">
     <div class="modal">
-        <div class="modal__close" onclick="closeModal()"> <img src="images/modal-close.svg" alt="cancel"></div>
+        <div class="modal__close" onclick="closeModal()"> <img src="{{asset('images/modal-close.svg')}}" alt="cancel"></div>
         <div class="modal__body">
             <h2 class="modal__title">Оставьте заявку</h2>
             <p class="modal__descr">Оставьте свои контактные данные и я свяжусь с вами в ближайшее время</p>
@@ -23,7 +23,7 @@
 </div>
 <div class="modal__wrapper modal__wrapper2" id="modal--1">
     <div class="modal">
-        <div class="modal__close modal__close2" onclick="closeModal()"> <img src="images/modal-close.svg" alt="cancel"></div>
+        <div class="modal__close modal__close2" onclick="closeModal()"> <img src="{{asset('images/modal-close.svg')}}" alt="cancel"></div>
         <div class="modal__body">
             <h2 class="modal__title">свяжитесь со мной</h2>
             <p class="modal__descr">Записаться на консультацию Вы можете, позвонив по телефону 87772987271 ежедневно с
@@ -104,9 +104,7 @@
                 <a class="modal__btn btn footer__col__btn" data-modal="modal--2" href="#">Оставить заявку
                     <img src="images/arrow-white.svg" alt="">
                 </a>
-                <p>Государственная лицензия №15017208 от 23.09.2015 года на занятие адвокатской деятельностью, 
-                    выданная Министерством юстиции 
-                    Республики Казахстан.</p>
+                <p>{{$contact->licenze}}</p>
             </div>
         </div>
         <div class="footer__copyright">

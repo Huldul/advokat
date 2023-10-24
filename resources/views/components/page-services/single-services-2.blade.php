@@ -34,8 +34,8 @@
                 @endif
                 @endforeach
             </div>
-            <button class="services-single__items__btn modal__btn btn">Оставить заявку
-                <img src="images/arrow-white.svg" alt="">
+            <button class="services-single__items__btn modal__btn btn" data-modal="modal--2">Оставить заявку
+                <img src="{{asset('images/arrow-white.svg')}}" alt="">
             </button>
         </div>
     </div>
