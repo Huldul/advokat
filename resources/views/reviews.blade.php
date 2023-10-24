@@ -19,8 +19,8 @@
     @include('components/header')
     <main class="main">
         @include('components/page-hero',[
-        "title"=> "Отзывы",
-        "breadcrumbs"=> "Отзывы",
+        "title"=> $indexPage->revtitle,
+        "breadcrumbs"=> $indexPage->revtitle,
         "background" => "images/reviews-bg.jpg"
         ])
         @include('components/page-reviews/reviews')

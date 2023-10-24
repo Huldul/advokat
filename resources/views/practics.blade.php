@@ -19,8 +19,8 @@
     @include('components/header')
     <main class="main">
         @include('components/page-hero',[
-        "title"=> "из моей практики",
-        "breadcrumbs"=> "Из моей практики",
+        "title"=> $indexPage->practitle,
+        "breadcrumbs"=> $indexPage->practitle,
         "background" => "images/practics-bg.jpg"
         ])
         @include('components/page-practics/practics')

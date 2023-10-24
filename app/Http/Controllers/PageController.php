@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Blog;
 use Illuminate\Support\Facades\Mail;
+use Symfony\Component\Mailer\Bridge\Mailgun\Transport\MailgunTransportFactory;
+use Exception;
+use App\Models\Form;
+
 
 class PageController extends Controller
 {
@@ -30,14 +34,22 @@ class PageController extends Controller
         return view('blog-single', compact('blog'));
     }
     public function sendRequest(Request $request){
-    $name = $request->input('name');
-    $number = $request->input('number');
+        try{
+            $name = $request->input('name');
+            $number = $request->input('number');
+        }catch (Exception $e) {
+            // Обработка ошибки
+            
+        }
 
-    Mail::send('email.request', ['name' => $name, 'number' => $number], function ($message) {
-        $message->to('email.example.com', 'Админ')->subject('Новая заявка');
-    });
+        Form::Create([
+            'name' => $request->input('name'),
+            'number' => $request->input('number'),
+        ]);
 
-    return redirect()->back()->with('success', 'Ваша заявка успешно отправлена!');
+        return redirect()->back()->with('success', 'Ваше сообщение отправлено');
+
+    
 }
 
 }

@@ -6,10 +6,9 @@
     </div>
     <div class="container">
         <div class="contacts__inner">
-            <h2 class="contacts__title title">РАСПОЛОЖЕНИЕ МОЕГО ОФИСА</h2>
+            <h2 class="contacts__title title">{{$contact->title}}</h2>
             <p class="contacts__descr">
-                Запишитесь на консультацию по телефону <a href="tel:{{$contact->number}}">{{$contact->number}}</a> или оставьте заявку.
-                Консультации платные. 
+                {{$contact->subtitle}}
             </p>
             <a href="" class="modal__btn btn contacts__btn" data-modal="modal--2">Оставить заявку
                 <img src="images/arrow-white.svg" alt="">

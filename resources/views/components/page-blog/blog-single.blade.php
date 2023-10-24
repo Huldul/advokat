@@ -6,7 +6,7 @@
             </div>
             <div class="blog-single__sidebar">
                 <div class="blog-single__img">
-                    <img src="images/{{$blog->image}}" alt="">
+                    <img src="{{asset('images/'.$blog->image)}}" alt="">
                 </div>
                 <aside class="blog-single__socials">
                     <h2 class="blog-single__socials__title">Поделитесь интересной статьей в соц сетях</h2>

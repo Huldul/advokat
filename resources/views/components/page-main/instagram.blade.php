@@ -2,12 +2,11 @@
     <div class="container">
         <div class="inst__inner">
             <div class="inst__info">
-                <div class="inst__title title">Подпишитесь на мой instagram аккаунт
+                <div class="inst__title title">{{$contact->inst_title}}
                     <a href="https://{{$contact->instagram}}">@advokat_rinat_moroz</a>
                 </div>
                 <p class="inst__descr">
-                    Рассказываю о том, как защитить свои права, не стать жертвой злоумышленников, о реальных уголовных
-                    делах и других интересных вещах.
+                {{$contact->inst_subtitle}}
                 </p>
                 <a href="https://{{$contact->instagram}}" class="btn inst__btn">Подписаться
                     <img src="images/arrow-white.svg" alt="">

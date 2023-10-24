@@ -58,7 +58,7 @@
         <div class="modal__body">
             <h2 class="modal__title">{{$practick->title}}</h2>
             <div class="modal__img">
-                <img src="images/modal-img.jpg" alt="">
+                <img src="{{asset('images/'.$practick->image)}}" alt="">
             </div>
             <div class="modal__descr">
                {{$practick->main}}

@@ -77,6 +77,36 @@
                             <input class="form-control" id="focusedInput" name="wa" type="text"value="{{$product->whatsapp}}">
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">ЗАГОЛОВОК НАД КАРТОЙ</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="focusedInput" name="title" type="text"value="{{$product->title}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">ПОДЗАГАЛОВОК</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="focusedInput" name="subtitle" type="text"value="{{$product->subtitle}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">ЗАГОЛОВОК ДЛЯ ИНСТАГРАММ</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="focusedInput" name="inst_title" type="text"value="{{$product->inst_title}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">ПОДЗАГАЛОВОК</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="focusedInput" name="inst_subtitle" type="text"value="{{$product->inst_subtitle}}"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">ИНОРМАЦИЯ О ЛИЦЕНЗИИ</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="focusedInput" name="licenze" type="text"value="{{$product->licenze}}"></textarea>
+                        </div>
+                    </div>
                     
                     <button type="submit" class="btn btn-warning col-sm-10">Изменить</button>
                 </form>

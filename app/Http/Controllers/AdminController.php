@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Form;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,18 +12,29 @@ use App\Models\Practick;
 use App\Models\Rewiews;
 use App\Models\Blog;
 use App\Models\Contact;
+use App\Models\IndexPage;
+use App\Models\Advantages;
+use App\Models\Principes;
+use App\Models\AboutPage;
+use App\Models\Sertificate;
+use App\Models\Services;
+use App\Models\Sub_services;
 
 class AdminController extends Controller
 {
     public function AdminPage()
     {
+        $services = Services::All();
         $product = Practick::All();
         $blogs = Blog::All();
         $rewiews = Rewiews::All();
+        $forms = Form::All();
         return view('user-management',[
             'products' => $product,
             'blogs' => $blogs,
-            'rewiews' => $rewiews   ,
+            'rewiews' => $rewiews,
+            'services' => $services,
+            'forms' => $forms
         ]);
     }
     public function EditPractickPage($id){
@@ -360,6 +372,11 @@ class AdminController extends Controller
         $contact->whatsapp = $request->input('wa');
         $contact->facebook = $request->input('face');
         $contact->instagram = $request->input('inst');
+        $contact->title = $request->input('title');
+        $contact->subtitle = $request->input('subtitle');
+        $contact->inst_title = $request->input('isnt_title');
+        $contact->inst_subtitle = $request->input('inst_subtitle');
+        $contact->licenze = $request->input('licenze');
     
         // Обрабатываем изображение, если оно было загружено
     
@@ -367,6 +384,283 @@ class AdminController extends Controller
         $contact->save();
     
         return redirect('/admin')->with('success', 'Контакты успешно обновлены');
+    }
+
+
+
+
+
+    public function EditIndexPage(){
+        $indexpage = IndexPage::find(1);
+        $advantages = Advantages::all();
+        $principes = Principes::all();
+        return view('EditIndexPage',[
+            'product' => $indexpage,
+            'advantages' => $advantages,
+            'principes' => $principes,
+        ]);
+    }
+    public function EditIndex(Request $request) {
+        $request->validate([
+            'title' => 'required|max:255',
+        ]);
+    
+        $product = IndexPage::findOrFail(1);
+        $product->title = $request->input('title');
+        $product->subtitle = $request->input('subtitle');
+        $product->name = $request->input('name');
+        $product->description = $request->input('description');
+        $product->consultation = $request->input('consultation');
+        $product->subtitle2 = $request->input('subtitle2');
+        $product->quote = $request->input('quote');
+        $product->revtitle = $request->input('revtitle');
+        $product->practitle = $request->input('practitle');
+        $product->blogtitle = $request->input('blogtitle');
+
+    
+        for ($i = 1; $i <= 5; $i++) {
+            $fieldName = 'image'.$i;
+    
+            if ($request->hasFile($fieldName)) {
+                $imageName = time() . '_' . $request->file($fieldName)->getClientOriginalName();
+                $file = $request->file($fieldName);
+                $product->$fieldName = $imageName;
+                $file->move(public_path('images'), $imageName);
+            }
+        }
+    
+        $product->save();
+    
+        return redirect('/admin/EditIndexPage')->with('success', 'Главная страница успешно обновлена');
+    } 
+
+    public function AddAdvantagePage(){
+        return view('AddAdvantagesPage');
+    }
+    public function addAdvantage(Request $request){
+    // Валидация данных
+    // Создание нового товара
+    Advantages::create([
+        'subtitle' => $request->input('subtitle'),
+    ]);
+
+    return redirect('/admin/EditIndexPage')->with('success', 'Приемущество успешно добавлено');
+}
+
+    public function DeleteAdvantage($id){
+
+        $product = Advantages::find($id);
+
+        // Проверяем, найден ли товар
+        if (!$product) {
+            return redirect('/admin/EditIndexPage')->with('error', 'Приемущество не найдено');
+        }
+
+        // Удаляем товар
+        $product->delete();
+        
+        return redirect('/admin/EditIndexPage')->with('success', 'Приемущество успешно удалено');
+    }
+
+    public function AddPrincipePage(){
+        return view('AddPrincipesPage');
+    }
+    public function addPrincipe(Request $request){
+    // Валидация данных
+    // Создание нового товара
+    Advantages::create([
+        'subtitle' => $request->input('subtitle'),
+    ]);
+
+    return redirect('/admin/EditIndexPage')->with('success', 'Принцип успешно добавлен');
+}
+
+    public function DeletePrincipe($id){
+
+        $product = Advantages::find($id);
+
+        // Проверяем, найден ли товар
+        if (!$product) {
+            return redirect('/admin/EditIndexPage')->with('error', 'Принцип не найден');
+        }
+
+        // Удаляем товар
+        $product->delete();
+        
+        return redirect('/admin/EditIndexPage')->with('success', 'Принцип успешно удален');
+    }
+
+
+    public function EditAboutPage(){
+        $indexpage = AboutPage::find(1);
+        $sertificates = Sertificate::all();
+        return view('EditAboutPage',[
+            'aboutPage' => $indexpage,
+            'sertificates' => $sertificates,
+        ]);
+    }
+    public function EditAbout(Request $request) {
+    
+        $product = AboutPage::findOrFail(1);
+        $product->title = $request->input('title');
+        $product->subtitle = $request->input('subtitle');
+        $product->subtitle2 = $request->input('subtitle2');
+    
+        for ($i = 1; $i <= 2; $i++) {
+            $fieldName = 'image'.$i;
+    
+            if ($request->hasFile($fieldName)) {
+                $imageName = time() . '_' . $request->file($fieldName)->getClientOriginalName();
+                $file = $request->file($fieldName);
+                $product->$fieldName = $imageName;
+                $file->move(public_path('images'), $imageName);
+            }
+        }
+    
+        $product->save();
+    
+        return redirect('/admin')->with('success', 'Страница о мне успешно обновлена');
+    }
+    public function AddSertificatePage(){
+        return view('AddSertificatePage');
+    }
+    public function addSertificate(Request $request){
+    $imageName = time() . '_' . $request->file('image')->getClientOriginalName(); // Создаем уникальное имя
+    $file = $request->file('image');
+    $file->move(public_path('images'), $imageName);
+    Sertificate::create([
+        'image' => $imageName,
+    ]);
+
+    return redirect('/admin/EditAboutPage')->with('success', 'Принцип успешно добавлен');
+}
+
+    public function DeleteSertificate($id){
+
+        $product = Advantages::find($id);
+
+        // Проверяем, найден ли товар
+        if (!$product) {
+            return redirect('/admin/EditAboutPage')->with('error', 'Принцип не найден');
+        }
+
+        // Удаляем товар
+        $product->delete();
+        
+        return redirect('/admin/EditAboutPage')->with('success', 'Принцип успешно удален');
+    }
+
+
+
+    public function EditServicePage($id){
+        $blog = Services::find($id);
+        return view('EditServicePage',[
+            'product' => $blog,
+        ]);
+    }
+    public function EditService(Request $request, $id){
+    
+        $product = Services::findOrFail($id);
+    
+        // Обновляем данные товара
+        $product->title = $request->input('title');
+        $product->subtitle = $request->input('subtitle');
+    
+    
+        // Сохраняем изменения
+        $product->save();
+    
+        return redirect('/admin')->with('success', 'Сервис успешно обновлен');
+    }
+    
+    public function AddServicePage(){
+        return view('AddServicePage');
+    }
+    public function addService(Request $request){
+
+    // Создание нового товара
+    Services::create([
+        'title' => $request->input('title'),
+        'subtitle' => $request->input('subtitle'),
+    ]);
+
+    return redirect('/admin')->with('success', 'Сервис успешно добавлен');
+}
+
+    public function DeleteService($id){
+
+        $product = Services::find($id);
+
+        // Проверяем, найден ли товар
+        if (!$product) {
+            return redirect('/admin')->with('error', 'Сервис не найден');
+        }
+
+        // Удаляем товар
+        $product->delete();
+        
+        return redirect('/admin')->with('success', 'Сервис успешно удален');
+    }
+    
+    public function AddSubServicePage($id){
+        $service = Services::find($id);
+        return view('AddSubServicePage',[
+            'service' => $service,
+        ]);
+    }
+    public function addSubService(Request $request, $id){
+    
+        $imagePath = null;
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->storeAs('public/images', $request->file('image')->getClientOriginalName());
+            $file = $request->file('image');
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('images'), $fileName);
+        }
+    // Создание нового товара
+        Sub_services::create([
+            'title' => $request->input('title'),
+            'description' => $request->input('description'),
+            'image' => $fileName,
+            'services_id' => $id,
+        ]);
+
+        return redirect('/admin')->with('success', 'Подсервис успешно добавлен');
+}
+
+    public function DeleteSubServicePage($id){
+        $service = Services::find($id);
+        return view('DeleteSubServicePage',[
+          'service' => $service,
+        ]);
+    }
+    public function DeleteSubService(Request $request){
+
+        $subservice = Sub_services::find($request->input('id'));
+
+        // Проверяем, найден ли товар
+        if (!$subservice) {
+            return redirect('/admin')->with('error', 'Подсервис не найден');
+        }
+
+        // Удаляем товар
+        $subservice->delete();
+        
+        return redirect('/admin')->with('success', 'Подсервис успешно удален');
+    }
+    public function DeleteForm($id){
+
+        $product = Form::find($id);
+
+        // Проверяем, найден ли товар
+        if (!$product) {
+            return redirect('/admin')->with('error', 'Форма не найдена');
+        }
+
+        // Удаляем товар
+        $product->delete();
+        
+        return redirect('/admin')->with('success', 'Форма успешно удалена');
     }
 }
 

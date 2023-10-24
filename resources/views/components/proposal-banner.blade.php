@@ -1,15 +1,12 @@
-<section style="background-image: url(images/proposal-banner-img.jpg);" class="proposal-banner">
+<section style="background-image: url({{asset('images/proposal-banner-img.jpg')}})" class="proposal-banner">
     <div class="container">
         <div class="proposal-banner__inner">
-            <h2 class="title title-mb-40">ЗАПИСАТЬСЯ НА КОНСУЛЬТАЦИЮ</h2>
-            <p class="proposal-banner__descr">Записаться на консультацию Вы можете, позвонив по телефону 87772987271
-                ежедневно с 09:00 часов до 22:00 часов, либо написав в WhatsApp на этом номере. 
-                <br>Также можно записаться на консультацию путем оставления заявки на этом сайте.
-                Консультации платные.
+            <h2 class="title title-mb-40">{{$indexPage->consultation}}</h2>
+            <p class="proposal-banner__descr">{{$indexPage->subtitle2}}</p>
             </p>
             <div class="proposal-banner__buttons">
                 <button class="modal__btn btn proposal-banner__btn" data-modal="modal--2">Оставить заявку
-                    <img src="images/arrow-white.svg" alt="">
+                    <img src="{{asset('images/arrow-white.svg')}}" alt="">
                 </button>
                 <a href="https://{{$contact->whatsapp}}" class="btn btn-transparent proposal-banner__btn">Перейти в WhatsApp
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="18" viewBox="0 0 25 18" fill="none">

@@ -6,12 +6,9 @@
                 <!-- Additional required wrapper -->
                 <div class="swiper-wrapper">
                     <!-- Slides -->
-                    <div class="certificates__item swiper-slide"><img src="images/certificate-1.jpg" alt=""></div>
-                    <div class="certificates__item swiper-slide"><img src="images/certificate-2.jpg" alt=""></div>
-                    <div class="certificates__item swiper-slide"><img src="images/certificate-3.jpg" alt=""></div>
-                    <div class="certificates__item swiper-slide"><img src="images/certificate-1.jpg" alt=""></div>
-                    <div class="certificates__item swiper-slide"><img src="images/certificate-2.jpg" alt=""></div>
-                    <div class="certificates__item swiper-slide"><img src="images/certificate-3.jpg" alt=""></div>
+                    @foreach ($sertificates as $sertificate)
+                    <div class="certificates__item swiper-slide"><img src="images/{{$sertificate->image}}" alt=""></div>
+                    @endforeach
                 </div>
                 <!-- If we need pagination -->
 

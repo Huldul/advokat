@@ -36,7 +36,12 @@
                 <a href="/" style="display: contents;"><button type="button" class="btn btn-success" >На главную</button></a>
               </div>
               <div class="row mb-2" style="display: flex;justify-content: center;">
+                <div class="btn-group mb-3" style="display: flex;justify-content: center;" role="group">
+                    <a href="/admin/EditIndexPage"><button type="button" class="btn btn-primary">Главная и заголовки</button></a>
+                    <a href="/admin/EditAboutPage"><button type="button" class="btn btn-primary">О мне</button></a>
+                  </div>
                 <a href="/admin/changePswd" style="display: contents;"><button type="button" class="btn btn-warning" >Изменить пароль</button></a>
+                <a href="/admin/editContact" style="display: contents;"><button type="button" class="btn btn-info" >Изменить контактную информацию</button></a>
               </div>
             <div class="accordion" id="accordionExample">
                 <div class="accordion-item">
@@ -330,10 +335,163 @@
                     </div>
                   </div>
                 </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+                        СЕРВИСЫ
+                      </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                          <div class="row">
+                              <div class="col-12">
+                                  <div class="card my-4">
+                                      <div class=" me-3 my-3 text-end">
+                                        <a class="btn btn-success" href="/admin/addService"><i
+                                                class=" add material-icons text-sm"></i>&nbsp;&nbsp;Добавить сервис</a>
+                                                
+                                    </div>
+                                    <div class="card-body px-0 pb-2">
+                                        <div class="table-responsive p-0">
+                                            <table class="table align-items-center mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th
+                                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                            ID
+                                                        </th>
+                                                        <th
+                                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                            НАЗВАНИЕ</th>
+                                                        <th
+                                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                            ПОДЗАГОЛОВОК</th>
+                                                        <th
+                                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                            ПОДСЕРВИСЫ</th>
+                                                        <th class="text-secondary opacity-7"></th>
+                                                    </tr>
+                                                </thead>
+                                                @foreach ($services as $service)
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="d-flex px-2 py-1">
+                                                                <div class="d-flex flex-column justify-content-center">
+                                                                    <p class="mb-0 text-sm">{{$service->id}}</p>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="d-flex flex-column justify-content-center">
+                                                                <h6 class="mb-0 text-sm">{{$service->title}}</h6>
+                
+                                                            </div>
+                                                        </td>
+                                                        <td class="align-middle text-center">
+                                                            <span class="text-secondary text-xs font-weight-bold">{{$service->subtitle}}</span>
+                                                        </td>
+                                                        <td class="align-middle text-center">
+                                                            @foreach ($service->subServices as $subservice)
+                                                            <span class="text-secondary text-xs font-weight-bold">{{$subservice->title}},</span>
+                                                            @endforeach
+                                                        </td>
+                                                        <td class="align-middle">
+                                                            <a rel="tooltip" class="btn btn-success mb-2"
+                                                                href="/admin/AddSubService/{{$service->id}}" data-original-title=""
+                                                                title="">
+                                                                <i class="material-icons">Добавить подсервис</i>
+                                                                <div class="ripple-container"></div>
+                                                            </a>
+                                                            <a rel="tooltip" class="btn btn-danger"
+                                                                href="/admin/deleteSubServicePage/{{$service->id}}" data-original-title=""
+                                                                title="">
+                                                                <i class="material-icons" style="color: white;">Удалить подсервис</i>
+                                                                <div class="ripple-container"></div>
+                                                            </a>
+                                                            <a rel="tooltip" class="btn btn-warning mb-2"
+                                                                href="/admin/editService/{{$service->id}}" data-original-title=""
+                                                                title="">
+                                                                <i class="material-icons">edit</i>
+                                                                <div class="ripple-container"></div>
+                                                            </a>
+                                                            
+                                                            <a rel="tooltip" class="btn btn-danger"
+                                                                href="/admin/deleteBlog/{{$service->id}}" data-original-title=""
+                                                                title="">
+                                                                <i class="material-icons" style="color: white;">delete</i>
+                                                                <div class="ripple-container"></div>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                                @endforeach
+                                            </table>
+                                          </div>
+                                    </div>  
+                                  </div>
+                              </div>
+                        </div>
+                    </div>
+                  </div>
               </div>
-              <div class="row" style="display: flex;justify-content: center;">
-                <a href="/admin/editContact" style="display: contents;"><button type="button" class="btn btn-info" >Изменить контактную информацию</button></a>
-              </div>
+          </div>
+        </div>
+    </div>
+    <div style="display: flex; justify-content: center;"><h1 class="page-header">Заявки</h1></div>
+    <div class="accordion-item mt-4 container-fluid py-4">
+        <div class="row mb-2" style="display: flex;justify-content: center;">
+            <div class="card-body px-0 pb-2">
+                <div class="table-responsive p-0">
+                    <table class="table align-items-center mb-0">
+                        <thead>
+                            <tr>
+                                <th
+                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    ID
+                                </th>
+                                <th
+                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                    ИМЯ</th>
+                                <th
+                                    class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    НОМЕР</th>
+                                <th class="text-secondary opacity-7"></th>
+                            </tr>
+                        </thead>
+                        @foreach ($forms as $product)
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <p class="mb-0 text-sm">{{$product->id}}</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex flex-column justify-content-center">
+                                        <h6 class="mb-0 text-sm">{{$product->name}}</h6>
+
+                                    </div>
+                                </td>
+                                <td class="align-middle text-center">
+                                    <span class="text-secondary text-xs font-weight-bold">{{$product->number}}</span>
+                                </td>
+                                <td class="align-middle">
+                                    <a rel="tooltip" class="btn btn-danger"
+                                        href="/admin/deleteForm/{{$product->id}}" data-original-title=""
+                                        title="">
+                                        <i class="material-icons" style="color: white;">delete</i>
+                                        <div class="ripple-container"></div>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        @endforeach
+                    </table>
+                </div>
+            </div>  
           </div>
         </div>
     </main>
