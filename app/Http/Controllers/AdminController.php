@@ -401,9 +401,7 @@ class AdminController extends Controller
         ]);
     }
     public function EditIndex(Request $request) {
-        $request->validate([
-            'title' => 'required|max:255',
-        ]);
+        
     
         $product = IndexPage::findOrFail(1);
         $product->title = $request->input('title');
@@ -413,9 +411,6 @@ class AdminController extends Controller
         $product->consultation = $request->input('consultation');
         $product->subtitle2 = $request->input('subtitle2');
         $product->quote = $request->input('quote');
-        $product->revtitle = $request->input('revtitle');
-        $product->practitle = $request->input('practitle');
-        $product->blogtitle = $request->input('blogtitle');
 
     
         for ($i = 1; $i <= 5; $i++) {
@@ -661,6 +656,110 @@ class AdminController extends Controller
         $product->delete();
         
         return redirect('/admin')->with('success', 'Форма успешно удалена');
+    }
+
+
+    public function EditServicePage1(){
+        $services = Services::All();
+        $product = Practick::All();
+        $blogs = Blog::All();
+        $rewiews = Rewiews::All();
+        $forms = Form::All();
+        return view('EditServicePage1',[
+            'products' => $product,
+            'blogs' => $blogs,
+            'rewiews' => $rewiews,
+            'services' => $services,
+            'forms' => $forms
+        ]);
+    }
+    public function EditBlogPage1(){
+        $services = Services::All();
+        $product = Practick::All();
+        $blogs = Blog::All();
+        $title= IndexPage::find(1);
+        $rewiews = Rewiews::All();
+        $forms = Form::All();
+        return view('EditBlogPage1',[
+            'title'=>$title,
+            'products' => $product,
+            'blogs' => $blogs,
+            'rewiews' => $rewiews,
+            'services' => $services,
+            'forms' => $forms
+        ]);
+    }
+    public function EditRewiewsPage1(){
+        $services = Services::All();
+        $product = Practick::All();
+        $blogs = Blog::All();
+        $rewiews = Rewiews::All();
+        $title= IndexPage::find(1);
+        $forms = Form::All();
+        return view('EditRewiewsPage1',[
+            'products' => $product,
+            'blogs' => $blogs,
+            'rewiews' => $rewiews,
+            'title'=>$title,
+            'services' => $services,
+            'forms' => $forms
+        ]);
+    }
+    public function EditPractickPage1(){
+        $services = Services::All();
+        $product = Practick::All();
+        $blogs = Blog::All();
+        $title= IndexPage::find(1);
+        $rewiews = Rewiews::All();
+        $forms = Form::All();
+        return view('EditPractickPage1',[
+            'products' => $product,
+            'blogs' => $blogs,
+            'title'=>$title,
+            'rewiews' => $rewiews,
+            'services' => $services,
+            'forms' => $forms
+        ]);
+    }
+    public function FormsPage1(){
+        $services = Services::All();
+        $product = Practick::All();
+        $blogs = Blog::All();
+        $title= IndexPage::find(1);
+        $rewiews = Rewiews::All();
+        $forms = Form::All();
+        return view('FormsPage1',[
+            'products' => $product,
+            'blogs' => $blogs,
+            'rewiews' => $rewiews,
+            'title'=>$title,
+            'services' => $services,
+            'forms' => $forms
+        ]);
+    }
+    public function EditBlogTitle(Request $request){
+        $product = IndexPage::findOrFail(1);
+        $product->blogtitle = $request->input('blogtitle');
+
+        $product->save();
+    
+        return redirect('/admin/EditBlogPage1')->with('success', 'Назвнаие успешно обновлено');
+    }
+    public function EditPractickTitle(Request $request){
+        $product = IndexPage::findOrFail(1);
+        $product->practitle = $request->input('practitle');
+
+        $product->save();
+    
+        return redirect('/admin/EditPractickPage1')->with('success', 'Назвнаие успешно обновлено');
+    }
+    public function EditRewiewsTitle(Request $request){
+        $product = IndexPage::findOrFail(1);
+        $product->revtitle = $request->input('revtitle');
+
+        $product->save();
+    
+        return redirect('/admin/EditRewiewsPage1')->with('success', 'Назвнаие успешно обновлено');
     }
 }
 

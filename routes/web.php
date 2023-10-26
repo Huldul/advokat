@@ -48,7 +48,7 @@ Route::middleware('admin')->group(function () {
     Route::post('admin/addBlog', [AdminController::class, "AddBlog"]);
     Route::get('admin/deleteBlog/{id}', [AdminController::class, "DeleteBlog"]);
 
-    Route::get('admin/editContact', [AdminController::class, "EditContactPage"]);
+    Route::get('admin/EditContactPage', [AdminController::class, "EditContactPage"]);
     Route::post('admin/editContact', [AdminController::class, "EditContact"]);
 
     Route::get('admin/changePswd', [AdminController::class, "ChangePswd"]);
@@ -89,6 +89,16 @@ Route::middleware('admin')->group(function () {
     Route::get('admin/deleteSubServicePage/{id}', [AdminController::class, "DeleteSubServicePage"]);
 
     Route::get('admin/deleteForm/{id}', [AdminController::class, "DeleteForm"]);
+
+    
+    Route::get('admin/EditServicePage1', [AdminController::class, "EditServicePage1"]);
+    Route::get('admin/EditBlogPage1', [AdminController::class, "EditBlogPage1"]);
+    Route::get('admin/EditRewiewsPage1', [AdminController::class, "EditRewiewsPage1"]);
+    Route::get('admin/EditPractickPage1', [AdminController::class, "EditPractickPage1"]);
+    Route::get('admin/FormsPage1', [AdminController::class, "FormsPage1"]);
+    Route::post('admin/EditBlogTitle', [AdminController::class, "EditBlogTitle"]);
+    Route::post('admin/EditRewiewsTitle', [AdminController::class, "EditRewiewsTitle"]);
+    Route::post('admin/EditPractickTitle', [AdminController::class, "EditPractickTitle"]);
 
 });
 Route::get('/login', [PageController::class, "LoginPage"])->name('login');

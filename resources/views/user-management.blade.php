@@ -12,15 +12,100 @@
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style1.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/line-icons.css') }}">
 
 </head>
 
 <body>
-  <main>
+    <header class="header dark-bg">
+        
 
-    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+        <!--logo start-->
+        <a class="logo" style="margin-right: 30px"> <span class="lite">Admin</span></a>
+        <a href="/"class="logo"><span class="lite">На сайт</span></a>
+    </header>
+    <aside>
+        <div id="sidebar"  class="nav-collapse ">
+            <!-- sidebar menu start-->
+            <ul class="sidebar-menu">                
+                <li class="">
+                    <a class="" href="/admin/EditIndexPage">
+                        <i class="icon_house_alt"></i>
+                        <span>Изменить главную</span>
+                    </a>
+                </li>
+                <li class="sub-menu">
+                    <a href="/admin/EditAboutPage" class="">
+                        <i class="icon_document_alt"></i>
+                        <span>Изменить о мне</span>
+                        <span class="menu-arrow arrow_carrot-right"></span>
+                    </a>
+                    <ul class="sub">
+                        <li><a class="" href="form_component.html">Form Elements</a></li>                          
+                        <li><a class="" href="form_validation.html">Form Validation</a></li>
+                    </ul>
+                </li>    
+                <li class="sub-menu">
+                    <a href="/admin/EditPractickPage1" class="">
+                        <i class="icon_desktop"></i>
+                        <span>Изменить практики</span>
+                        <span class="menu-arrow arrow_carrot-right"></span>
+                    </a>
+                </li>   
+                <li class="sub-menu">
+                    <a href="/admin/EditRewiewsPage1" class="">
+                        <i class="icon_desktop"></i>
+                        <span>Изменить отзывы</span>
+                        <span class="menu-arrow arrow_carrot-right"></span>
+                    </a>
+                </li>
+                <li>
+                    <a class="" href="/admin/EditBlogPage1">
+                        <i class="icon_genius"></i>
+                        <span>Изменить блоги</span>
+                    </a>
+                </li>
+                <li>                     
+                    <a class="" href="/admin/EditServicePage1">
+                        <i class="icon_piechart"></i>
+                        <span>Изменить Услуги</span>
+                        
+                    </a>
+                                       
+                </li>
+                <li>                     
+                    <a class="" href="/admin/EditContactPage">
+                        <i class="icon_piechart"></i>
+                        <span>Изменить контактную информацию</span>
+                        
+                    </a>
+                                       
+                </li>
+                <li>                     
+                    <a class="" href="FormsPage1">
+                        <i class="icon_piechart"></i>
+                        <span>Заявки</span>
+                        
+                    </a>
+                                       
+                </li>
+                <li>                     
+                    <a class="" href="/admin/ChangePswd">
+                        <i class="icon_piechart"></i>
+                        <span>Изменить пароль</span>
+                        
+                    </a>
+                                       
+                </li>
+            </ul>
+            <!-- sidebar menu end-->
+        </div>
+    </aside>    
+
+    <section id="main-content">
         <!-- Navbar -->
         <!-- End Navbar -->
+        <section class="wrapper">
         <div class="container-fluid py-4">
             @if(session('success'))
                 <div class="alert alert-success">
@@ -32,471 +117,12 @@
                     {{ session('error') }}
                 </div>
             @endif
-            <div class="row mb-2" style="display: flex;justify-content: center;">
-                <a href="/" style="display: contents;"><button type="button" class="btn btn-success" >На главную</button></a>
-              </div>
-              <div class="row mb-2" style="display: flex;justify-content: center;">
-                <div class="btn-group mb-3" style="display: flex;justify-content: center;" role="group">
-                    <a href="/admin/EditIndexPage"><button type="button" class="btn btn-primary">Главная и заголовки</button></a>
-                    <a href="/admin/EditAboutPage"><button type="button" class="btn btn-primary">О мне</button></a>
-                  </div>
-                <a href="/admin/changePswd" style="display: contents;"><button type="button" class="btn btn-warning" >Изменить пароль</button></a>
-                <a href="/admin/editContact" style="display: contents;"><button type="button" class="btn btn-info" >Изменить контактную информацию</button></a>
-              </div>
-            <div class="accordion" id="accordionExample">
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                        ПРАКТИКА
-                    </button>
-                  </h2>
-                  <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card my-4">
-                                    <div class=" me-3 my-3 text-end">
-                                      <a class="btn btn-success" href="/admin/addPractick"><i
-                                              class=" add material-icons text-sm"></i>&nbsp;&nbsp;Добавить практику</a>
-                                  </div>
-                                  <div class="card-body px-0 pb-2">
-                                      <div class="table-responsive p-0">
-                                          <table class="table align-items-center mb-0">
-                                              <thead>
-                                                  <tr>
-                                                      <th
-                                                          class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                          ID
-                                                      </th>
-                                                      <th
-                                                          class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                          ФОТО</th>
-                                                      <th
-                                                          class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                                          НАЗВАНИЕ</th>
-                                                      <th
-                                                          class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                          АВТОР </th>
-                                                      <th
-                                                          class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                          ПОДЗАГОЛОВОК</th>
-                                                      <th class="text-secondary opacity-7"></th>
-                                                  </tr>
-                                              </thead>
-                                              @foreach ($products as $product)
-                                              <tbody>
-                                                  <tr>
-                                                      <td>
-                                                          <div class="d-flex px-2 py-1">
-                                                              <div class="d-flex flex-column justify-content-center">
-                                                                  <p class="mb-0 text-sm">{{$product->id}}</p>
-                                                              </div>
-                                                          </div>
-                                                      </td>
-                                                      <td>
-                                                          <div class="d-flex px-2 py-1">
-                                                              <div>
-                                                                  <img src="{{asset('images/'.$product->image)}}"
-                                                                      class="avatar avatar-sm me-3 border-radius-lg" style="width: 300px" alt="user1">
-                                                              </div>
-              
-                                                          </div>
-                                                      </td>
-                                                      <td>
-                                                          <div class="d-flex flex-column justify-content-center">
-                                                              <h6 class="mb-0 text-sm">{{$product->title}}</h6>
-              
-                                                          </div>
-                                                      </td>
-                                                      <td class="align-middle text-center text-sm">
-                                                          <p class="text-xs text-secondary mb-0">{{$product->author}}
-                                                          </p>
-                                                      </td>
-                                                      <td class="align-middle text-center">
-                                                          <span class="text-secondary text-xs font-weight-bold">{{$product->subtitle}}</span>
-                                                      </td>
-                                                      <td class="align-middle">
-                                                          <a rel="tooltip" class="btn btn-warning mb-2"
-                                                              href="/admin/editPractick/{{$product->id}}" data-original-title=""
-                                                              title="">
-                                                              <i class="material-icons">edit</i>
-                                                              <div class="ripple-container"></div>
-                                                          </a>
-                                                          
-                                                          <a rel="tooltip" class="btn btn-danger"
-                                                              href="/admin/deletePractick/{{$product->id}}" data-original-title=""
-                                                              title="">
-                                                              <i class="material-icons" style="color: white;">delete</i>
-                                                              <div class="ripple-container"></div>
-                                                          </a>
-                                                      </td>
-                                                  </tr>
-                                              </tbody>
-                                              @endforeach
-                                          </table>
-                                      </div>
-                                  </div>  
-                                </div>
-                            </div>  
-                    </div>
-                  </div>
-                </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                      ОТЗЫВЫ
-                    </button>
-                  </h2>
-                  <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card my-4">
-                                    <div class=" me-3 my-3 text-end">
-                                      <a class="btn btn-success" href="/admin/addRewiews"><i
-                                              class=" add material-icons text-sm"></i>&nbsp;&nbsp;Добавить Отзыв</a>
-                                  </div>
-                                  <div class="card-body px-0 pb-2">
-                                      <div class="table-responsive p-0">
-                                          <table class="table align-items-center mb-0">
-                                              <thead>
-                                                  <tr>
-                                                      <th
-                                                          class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                          ID
-                                                      </th>
-                                                      <th
-                                                          class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                          ФОТО</th>
-                                                      <th
-                                                          class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                                          НАЗВАНИЕ</th>
-                                                      <th
-                                                          class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                          АВТОР </th>
-                                                      <th
-                                                          class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                          ПОДЗАГОЛОВОК</th>
-                                                      <th class="text-secondary opacity-7"></th>
-                                                  </tr>
-                                              </thead>
-                                              @foreach ($rewiews as $rewiew)
-                                              <tbody>
-                                                  <tr>
-                                                      <td>
-                                                          <div class="d-flex px-2 py-1">
-                                                              <div class="d-flex flex-column justify-content-center">
-                                                                  <p class="mb-0 text-sm">{{$rewiew->id}}</p>
-                                                              </div>
-                                                          </div>
-                                                      </td>
-                                                      <td>
-                                                          <div class="d-flex px-2 py-1">
-                                                              <div>
-                                                                  <img src="{{asset('images/'.$rewiew->image)}}"
-                                                                      class="avatar avatar-sm me-3 border-radius-lg" style="width: 300px" alt="user1">
-                                                              </div>
-              
-                                                          </div>
-                                                      </td>
-                                                      <td>
-                                                          <div class="d-flex flex-column justify-content-center">
-                                                              <h6 class="mb-0 text-sm">{{$rewiew->title}}</h6>
-              
-                                                          </div>
-                                                      </td>
-                                                      <td class="align-middle text-center text-sm">
-                                                          <p class="text-xs text-secondary mb-0">{{$rewiew->author}}
-                                                          </p>
-                                                      </td>
-                                                      <td class="align-middle text-center">
-                                                          <span class="text-secondary text-xs font-weight-bold">{{$rewiew->subtitle}}</span>
-                                                      </td>
-                                                      <td class="align-middle">
-                                                          <a rel="tooltip" class="btn btn-warning mb-2"
-                                                              href="/admin/editRewiews/{{$rewiew->id}}" data-original-title=""
-                                                              title="">
-                                                              <i class="material-icons">edit</i>
-                                                              <div class="ripple-container"></div>
-                                                          </a>
-                                                          
-                                                          <a rel="tooltip" class="btn btn-danger"
-                                                              href="/admin/deleteRewiews/{{$rewiew->id}}" data-original-title=""
-                                                              title="">
-                                                              <i class="material-icons" style="color: white;">delete</i>
-                                                              <div class="ripple-container"></div>
-                                                          </a>
-                                                      </td>
-                                                  </tr>
-                                              </tbody>
-                                              @endforeach
-                                          </table>
-                                      </div>
-                                  </div>  
-                                </div>
-                            </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                      БЛОГИ
-                    </button>
-                  </h2>
-                  <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card my-4">
-                                    <div class=" me-3 my-3 text-end">
-                                      <a class="btn btn-success" href="/admin/addBlog"><i
-                                              class=" add material-icons text-sm"></i>&nbsp;&nbsp;Добавить Блог</a>
-                                  </div>
-                                  <div class="card-body px-0 pb-2">
-                                      <div class="table-responsive p-0">
-                                          <table class="table align-items-center mb-0">
-                                              <thead>
-                                                  <tr>
-                                                      <th
-                                                          class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                          ID
-                                                      </th>
-                                                      <th
-                                                          class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                          ФОТО</th>
-                                                      <th
-                                                          class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                                          НАЗВАНИЕ</th>
-                                                      <th
-                                                          class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                          АВТОР </th>
-                                                      <th
-                                                          class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                          ПОДЗАГОЛОВОК</th>
-                                                      <th class="text-secondary opacity-7"></th>
-                                                  </tr>
-                                              </thead>
-                                              @foreach ($blogs as $blog)
-                                              <tbody>
-                                                  <tr>
-                                                      <td>
-                                                          <div class="d-flex px-2 py-1">
-                                                              <div class="d-flex flex-column justify-content-center">
-                                                                  <p class="mb-0 text-sm">{{$blog->id}}</p>
-                                                              </div>
-                                                          </div>
-                                                      </td>
-                                                      <td>
-                                                          <div class="d-flex px-2 py-1">
-                                                              <div>
-                                                                  <img src="{{asset('images/'.$blog->image)}}"
-                                                                      class="avatar avatar-sm me-3 border-radius-lg" style="width: 300px" alt="user1">
-                                                              </div>
-              
-                                                          </div>
-                                                      </td>
-                                                      <td>
-                                                          <div class="d-flex flex-column justify-content-center">
-                                                              <h6 class="mb-0 text-sm">{{$blog->title}}</h6>
-              
-                                                          </div>
-                                                      </td>
-                                                      <td class="align-middle text-center text-sm">
-                                                          <p class="text-xs text-secondary mb-0">{{$blog->author}}
-                                                          </p>
-                                                      </td>
-                                                      <td class="align-middle text-center">
-                                                          <span class="text-secondary text-xs font-weight-bold">{{$blog->subtitle}}</span>
-                                                      </td>
-                                                      <td class="align-middle">
-                                                          <a rel="tooltip" class="btn btn-warning mb-2"
-                                                              href="/admin/editBlog/{{$blog->id}}" data-original-title=""
-                                                              title="">
-                                                              <i class="material-icons">edit</i>
-                                                              <div class="ripple-container"></div>
-                                                          </a>
-                                                          
-                                                          <a rel="tooltip" class="btn btn-danger"
-                                                              href="/admin/deleteBlog/{{$blog->id}}" data-original-title=""
-                                                              title="">
-                                                              <i class="material-icons" style="color: white;">delete</i>
-                                                              <div class="ripple-container"></div>
-                                                          </a>
-                                                      </td>
-                                                  </tr>
-                                              </tbody>
-                                              @endforeach
-                                          </table>
-                                        </div>
-                                  </div>  
-                                </div>
-                            </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
-                        СЕРВИСЫ
-                      </button>
-                    </h2>
-                    <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                      <div class="accordion-body">
-                          <div class="row">
-                              <div class="col-12">
-                                  <div class="card my-4">
-                                      <div class=" me-3 my-3 text-end">
-                                        <a class="btn btn-success" href="/admin/addService"><i
-                                                class=" add material-icons text-sm"></i>&nbsp;&nbsp;Добавить сервис</a>
-                                                
-                                    </div>
-                                    <div class="card-body px-0 pb-2">
-                                        <div class="table-responsive p-0">
-                                            <table class="table align-items-center mb-0">
-                                                <thead>
-                                                    <tr>
-                                                        <th
-                                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                            ID
-                                                        </th>
-                                                        <th
-                                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                                            НАЗВАНИЕ</th>
-                                                        <th
-                                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                            ПОДЗАГОЛОВОК</th>
-                                                        <th
-                                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                                            ПОДСЕРВИСЫ</th>
-                                                        <th class="text-secondary opacity-7"></th>
-                                                    </tr>
-                                                </thead>
-                                                @foreach ($services as $service)
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="d-flex px-2 py-1">
-                                                                <div class="d-flex flex-column justify-content-center">
-                                                                    <p class="mb-0 text-sm">{{$service->id}}</p>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="d-flex flex-column justify-content-center">
-                                                                <h6 class="mb-0 text-sm">{{$service->title}}</h6>
-                
-                                                            </div>
-                                                        </td>
-                                                        <td class="align-middle text-center">
-                                                            <span class="text-secondary text-xs font-weight-bold">{{$service->subtitle}}</span>
-                                                        </td>
-                                                        <td class="align-middle text-center">
-                                                            @foreach ($service->subServices as $subservice)
-                                                            <span class="text-secondary text-xs font-weight-bold">{{$subservice->title}},</span>
-                                                            @endforeach
-                                                        </td>
-                                                        <td class="align-middle">
-                                                            <a rel="tooltip" class="btn btn-success mb-2"
-                                                                href="/admin/AddSubService/{{$service->id}}" data-original-title=""
-                                                                title="">
-                                                                <i class="material-icons">Добавить подсервис</i>
-                                                                <div class="ripple-container"></div>
-                                                            </a>
-                                                            <a rel="tooltip" class="btn btn-danger"
-                                                                href="/admin/deleteSubServicePage/{{$service->id}}" data-original-title=""
-                                                                title="">
-                                                                <i class="material-icons" style="color: white;">Удалить подсервис</i>
-                                                                <div class="ripple-container"></div>
-                                                            </a>
-                                                            <a rel="tooltip" class="btn btn-warning mb-2"
-                                                                href="/admin/editService/{{$service->id}}" data-original-title=""
-                                                                title="">
-                                                                <i class="material-icons">edit</i>
-                                                                <div class="ripple-container"></div>
-                                                            </a>
-                                                            
-                                                            <a rel="tooltip" class="btn btn-danger"
-                                                                href="/admin/deleteBlog/{{$service->id}}" data-original-title=""
-                                                                title="">
-                                                                <i class="material-icons" style="color: white;">delete</i>
-                                                                <div class="ripple-container"></div>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                                @endforeach
-                                            </table>
-                                          </div>
-                                    </div>  
-                                  </div>
-                              </div>
-                        </div>
-                    </div>
-                  </div>
-              </div>
-          </div>
+            
         </div>
     </div>
-    <div style="display: flex; justify-content: center;"><h1 class="page-header">Заявки</h1></div>
-    <div class="accordion-item mt-4 container-fluid py-4">
-        <div class="row mb-2" style="display: flex;justify-content: center;">
-            <div class="card-body px-0 pb-2">
-                <div class="table-responsive p-0">
-                    <table class="table align-items-center mb-0">
-                        <thead>
-                            <tr>
-                                <th
-                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                    ID
-                                </th>
-                                <th
-                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                    ИМЯ</th>
-                                <th
-                                    class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                    НОМЕР</th>
-                                <th class="text-secondary opacity-7"></th>
-                            </tr>
-                        </thead>
-                        @foreach ($forms as $product)
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div class="d-flex px-2 py-1">
-                                        <div class="d-flex flex-column justify-content-center">
-                                            <p class="mb-0 text-sm">{{$product->id}}</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="d-flex flex-column justify-content-center">
-                                        <h6 class="mb-0 text-sm">{{$product->name}}</h6>
-
-                                    </div>
-                                </td>
-                                <td class="align-middle text-center">
-                                    <span class="text-secondary text-xs font-weight-bold">{{$product->number}}</span>
-                                </td>
-                                <td class="align-middle">
-                                    <a rel="tooltip" class="btn btn-danger"
-                                        href="/admin/deleteForm/{{$product->id}}" data-original-title=""
-                                        title="">
-                                        <i class="material-icons" style="color: white;">delete</i>
-                                        <div class="ripple-container"></div>
-                                    </a>
-                                </td>
-                            </tr>
-                        </tbody>
-                        @endforeach
-                    </table>
-                </div>
-            </div>  
-          </div>
-        </div>
-    </main>
     
-  </main>
+        </section>
+    </section>
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
     integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">

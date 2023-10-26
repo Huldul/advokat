@@ -16,12 +16,91 @@
 </head>
 
 <body>
-  <header>
-    <!-- place navbar here -->
-  </header>
+    <header class="header dark-bg">
+        <!--logo start-->
+         <a class="logo" style="margin-right: 30px"> <span class="lite">Admin</span></a>
+         <a href="/"class="logo"><span class="lite">На сайт</span></a>
+     </header>
+     <aside>
+         <div id="sidebar"  class="nav-collapse ">
+             <!-- sidebar menu start-->
+             <ul class="sidebar-menu">                
+                 <li class="">
+                     <a class="" href="/admin/EditIndexPage">
+                         <i class="icon_house_alt"></i>
+                         <span>Изменить главную</span>
+                     </a>
+                 </li>
+                 <li class="sub-menu">
+                     <a href="/admin/EditAboutPage" class="">
+                         <i class="icon_document_alt"></i>
+                         <span>Изменить о мне</span>
+                         <span class="menu-arrow arrow_carrot-right"></span>
+                     </a>
+                     <ul class="sub">
+                         <li><a class="" href="form_component.html">Form Elements</a></li>                          
+                         <li><a class="" href="form_validation.html">Form Validation</a></li>
+                     </ul>
+                 </li>    
+                 <li class="sub-menu">
+                     <a href="/admin/EditPractickPage1" class="">
+                         <i class="icon_desktop"></i>
+                         <span>Изменить практики</span>
+                         <span class="menu-arrow arrow_carrot-right"></span>
+                     </a>
+                 </li>   
+                 <li class="sub-menu">
+                     <a href="/admin/EditRewiewsPage1" class="">
+                         <i class="icon_desktop"></i>
+                         <span>Изменить отзывы</span>
+                         <span class="menu-arrow arrow_carrot-right"></span>
+                     </a>
+                 </li>
+                 <li>
+                     <a class="" href="/admin/EditBlogPage1">
+                         <i class="icon_genius"></i>
+                         <span>Изменить блоги</span>
+                     </a>
+                 </li>
+                 <li>                     
+                     <a class="" href="/admin/EditServicePage1">
+                         <i class="icon_piechart"></i>
+                         <span>Изменить сервисы</span>
+                         
+                     </a>
+                                        
+                 </li>
+                 <li>                     
+                     <a class="" href="/admin/EditContactPage">
+                         <i class="icon_piechart"></i>
+                         <span>Изменить контактную информацию</span>
+                         
+                     </a>
+                                        
+                 </li>
+                 <li>                     
+                     <a class="" href="FormsPage1">
+                         <i class="icon_piechart"></i>
+                         <span>Заявки</span>
+                         
+                     </a>
+                                        
+                 </li>
+                 <li>                     
+                     <a class="" href="/admin/ChangePswd">
+                         <i class="icon_piechart"></i>
+                         <span>Изменить пароль</span>
+                         
+                     </a>
+                                        
+                 </li>
+             </ul>
+             <!-- sidebar menu end-->
+         </div>
+     </aside>   
   <main>
-    <div class="container">
-        <div class="wrapper">
+    <section id="main-content">
+        <section class="wrapper">
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -31,6 +110,9 @@
                     </ul>
                 </div>
             @endif
+            <div class=" me-3 my-3">
+                <h3 class="page-header" >О мне</h3>
+            </div>
             <div class="accordion" id="accordionExample">
                 <div class="accordion-item">
                   <h2 class="accordion-header">
@@ -145,9 +227,11 @@
                     <button type="submit" class="btn btn-warning col-sm-10">Изменить</button>
                 </form>
             </div>
-        </div>
-    </div>
-  </main>
+        </section>
+    </section>
+  
+</section>
+</section>
   <footer>
     <!-- place footer here -->
   </footer>

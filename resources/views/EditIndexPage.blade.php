@@ -16,12 +16,91 @@
 </head>
 
 <body>
-  <header>
-    <!-- place navbar here -->
-  </header>
+    <header class="header dark-bg">
+       <!--logo start-->
+        <a class="logo" style="margin-right: 30px"> <span class="lite">Admin</span></a>
+        <a href="/"class="logo"><span class="lite">На сайт</span></a>
+    </header>
+    <aside>
+        <div id="sidebar"  class="nav-collapse ">
+            <!-- sidebar menu start-->
+            <ul class="sidebar-menu">                
+                <li class="">
+                    <a class="" href="/admin/EditIndexPage">
+                        <i class="icon_house_alt"></i>
+                        <span>Изменить главную</span>
+                    </a>
+                </li>
+                <li class="sub-menu">
+                    <a href="/admin/EditAboutPage" class="">
+                        <i class="icon_document_alt"></i>
+                        <span>Изменить о мне</span>
+                        <span class="menu-arrow arrow_carrot-right"></span>
+                    </a>
+                    <ul class="sub">
+                        <li><a class="" href="form_component.html">Form Elements</a></li>                          
+                        <li><a class="" href="form_validation.html">Form Validation</a></li>
+                    </ul>
+                </li>    
+                <li class="sub-menu">
+                    <a href="/admin/EditPractickPage1" class="">
+                        <i class="icon_desktop"></i>
+                        <span>Изменить практики</span>
+                        <span class="menu-arrow arrow_carrot-right"></span>
+                    </a>
+                </li>   
+                <li class="sub-menu">
+                    <a href="/admin/EditRewiewsPage1" class="">
+                        <i class="icon_desktop"></i>
+                        <span>Изменить отзывы</span>
+                        <span class="menu-arrow arrow_carrot-right"></span>
+                    </a>
+                </li>
+                <li>
+                    <a class="" href="/admin/EditBlogPage1">
+                        <i class="icon_genius"></i>
+                        <span>Изменить блоги</span>
+                    </a>
+                </li>
+                <li>                     
+                    <a class="" href="/admin/EditServicePage1">
+                        <i class="icon_piechart"></i>
+                        <span>Изменить сервисы</span>
+                        
+                    </a>
+                                       
+                </li>
+                <li>                     
+                    <a class="" href="/admin/EditContactPage">
+                        <i class="icon_piechart"></i>
+                        <span>Изменить контактную информацию</span>
+                        
+                    </a>
+                                       
+                </li>
+                <li>                     
+                    <a class="" href="FormsPage1">
+                        <i class="icon_piechart"></i>
+                        <span>Заявки</span>
+                        
+                    </a>
+                                       
+                </li>
+                <li>                     
+                    <a class="" href="/admin/ChangePswd">
+                        <i class="icon_piechart"></i>
+                        <span>Изменить пароль</span>
+                        
+                    </a>
+                                       
+                </li>
+            </ul>
+            <!-- sidebar menu end-->
+        </div>
+    </aside>    
   <main>
-    <div class="container">
-        <div class="wrapper">
+    <section id="main-content">
+        <section class="wrapper">
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -31,7 +110,10 @@
                     </ul>
                 </div>
             @endif
-            <div class="accordion" id="accordionExample">
+            <div class=" me-3 my-3">
+                <h3 class="page-header" >Главная страница</h3>
+            </div>
+            <section class="accordion" id="accordionExample">
                 <div class="accordion-item">
                   <h2 class="accordion-header">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
@@ -168,17 +250,16 @@
                         <label class="col-sm-2 control-label">Ваше фото</label>
                         <div class="form-group">
                             <img src="{{ asset('images/' . $product->image4) }}" style="width: 200px" alt="Текущее изображение">
-                            <label for="exampleInputFile">Изображение</label>
-                            <input type="file" name="image4" id="exampleInputFile">
                         </div>
+                        <input type="file" name="image4" id="exampleInputFile">
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Ваше фото 2</label>
                         <div class="form-group">
                             <img src="{{ asset('images/' . $product->image5) }}" style="width: 200px" alt="Текущее изображение">
-                            <label for="exampleInputFile">Изображение</label>
-                            <input type="file" name="image5" id="exampleInputFile">
+                            
                         </div>
+                        <input type="file" name="image5" id="exampleInputFile">
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Заголовок</label>
@@ -193,22 +274,21 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Изображения для слайдера</label>
+                        <h3 class="col-sm-2 control-label">Изображения для слайдера</h3>
                         <div class="form-group">
                             <img src="{{ asset('images/' . $product->image1) }}" style="width: 200px" alt="Текущее изображение">
-                            <label for="exampleInputFile">Изображение</label>
-                            <input type="file" name="image1" id="exampleInputFile">
                         </div>
+                        <input type="file" name="image1" id="exampleInputFile">
                         <div class="form-group">
                             <img src="{{ asset('images/' . $product->image2) }}" style="width: 200px" alt="Текущее изображение">
-                            <label for="exampleInputFile">Изображение</label>
-                            <input type="file" name="image2" id="exampleInputFile">
+                            
                         </div>
+                        <input type="file" name="image2" id="exampleInputFile">
                         <div class="form-group">
                             <img src="{{ asset('images/' . $product->image3) }}" style="width: 200px" alt="Текущее изображение">
-                            <label for="exampleInputFile">Изображение</label>
-                            <input type="file" name="image3" id="exampleInputFile">
+                            
                         </div>
+                        <input type="file" name="image3" id="exampleInputFile">
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Имя</label>
@@ -240,30 +320,13 @@
                             <input class="form-control" id="focusedInput" name="quote" type="text"value="{{$product->quote}}">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">Заголовок ПРАКТИКИ</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" id="focusedInput" name="practitle" type="text"value="{{$product->practitle}}">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">Заголовок ОТЗЫВОВ</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" id="focusedInput" name="revtitle" type="text"value="{{$product->revtitle}}">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">Заголовок БЛОГА</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" id="focusedInput" name="blogtitle" type="text"value="{{$product->blogtitle}}">
-                        </div>
-                    </div>
+                    
                     
                     <button type="submit" class="btn btn-warning col-sm-10">Изменить</button>
                 </form>
             </div>
-        </div>
-    </div>
+        </section>
+    </section>
   </main>
   <footer>
     <!-- place footer here -->
