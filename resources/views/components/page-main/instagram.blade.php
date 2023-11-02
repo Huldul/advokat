@@ -2,13 +2,13 @@
     <div class="container">
         <div class="inst__inner">
             <div class="inst__info">
-                <div class="inst__title title">{{$contact->inst_title}}
-                    <a href="https://{{$contact->instagram}}">@advokat_rinat_moroz</a>
+                <div class="inst__title title" style="white-space: pre-line;">{{$contact->inst_title}}
+                    <a href="https://{{$contact->instagram}}" target="_blank">@advokat_rinat_moroz</a>
                 </div>
-                <p class="inst__descr">
+                <p class="inst__descr" style="white-space: pre-line;">
                 {{$contact->inst_subtitle}}
                 </p>
-                <a href="https://{{$contact->instagram}}" class="btn inst__btn">Подписаться
+                <a href="https://{{$contact->instagram}}" target="_blank" class="btn inst__btn">Подписаться
                     <img src="images/arrow-white.svg" alt="">
                 </a>
             </div>

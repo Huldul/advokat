@@ -9,9 +9,9 @@
                     </a>
                 </div>
                 <a href="blog-single">
-                    <h2 class="blog-item__title">{{$blog->title}}</h2>
+                    <h2 class="blog-item__title" >{{$blog->title}}</h2>
                 </a>
-                <a href="blog-single/{{$blog->id}}" class="blog-item__more more">Подробнее
+                <a href="blog-single/{{$blog->url}}" class="blog-item__more more">Подробнее
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="18" viewBox="0 0 25 18" fill="none">
                         <path
                             d="M0.499922 9.00008L23.5011 9.00111M23.5011 9.00111L15.5307 1.03071M23.5011 9.00111L15.5306 16.9716"

@@ -24,83 +24,7 @@
         <a class="logo" style="margin-right: 30px"> <span class="lite">Admin</span></a>
         <a href="/"class="logo"><span class="lite">На сайт</span></a>
     </header>
-    <aside>
-        <div id="sidebar"  class="nav-collapse ">
-            <!-- sidebar menu start-->
-            <ul class="sidebar-menu">                
-                <li class="">
-                    <a class="" href="/admin/EditIndexPage">
-                        <i class="icon_house_alt"></i>
-                        <span>Изменить главную</span>
-                    </a>
-                </li>
-                <li class="sub-menu">
-                    <a href="/admin/EditAboutPage" class="">
-                        <i class="icon_document_alt"></i>
-                        <span>Изменить о мне</span>
-                        <span class="menu-arrow arrow_carrot-right"></span>
-                    </a>
-                    <ul class="sub">
-                        <li><a class="" href="form_component.html">Form Elements</a></li>                          
-                        <li><a class="" href="form_validation.html">Form Validation</a></li>
-                    </ul>
-                </li>    
-                <li class="sub-menu">
-                    <a href="/admin/EditPractickPage1" class="">
-                        <i class="icon_desktop"></i>
-                        <span>Изменить практики</span>
-                        <span class="menu-arrow arrow_carrot-right"></span>
-                    </a>
-                </li>   
-                <li class="sub-menu">
-                    <a href="/admin/EditRewiewsPage1" class="">
-                        <i class="icon_desktop"></i>
-                        <span>Изменить отзывы</span>
-                        <span class="menu-arrow arrow_carrot-right"></span>
-                    </a>
-                </li>
-                <li>
-                    <a class="" href="/admin/EditBlogPage1">
-                        <i class="icon_genius"></i>
-                        <span>Изменить блоги</span>
-                    </a>
-                </li>
-                <li>                     
-                    <a class="" href="/admin/EditServicePage1">
-                        <i class="icon_piechart"></i>
-                        <span>Изменить сервисы</span>
-                        
-                    </a>
-                                       
-                </li>
-                <li>                     
-                    <a class="" href="/admin/EditContactPage">
-                        <i class="icon_piechart"></i>
-                        <span>Изменить контактную информацию</span>
-                        
-                    </a>
-                                       
-                </li>
-                <li>                     
-                    <a class="" href="FormsPage1">
-                        <i class="icon_piechart"></i>
-                        <span>Заявки</span>
-                        
-                    </a>
-                                       
-                </li>
-                <li>                     
-                    <a class="" href="/admin/ChangePswd">
-                        <i class="icon_piechart"></i>
-                        <span>Изменить пароль</span>
-                        
-                    </a>
-                                       
-                </li>
-            </ul>
-            <!-- sidebar menu end-->
-        </div>
-    </aside>    
+    @include('aside')
 
     <section id="main-content">
         <!-- Navbar -->
@@ -134,8 +58,8 @@
                       <div class="row">
                         <div class="card my-4">
                             <div class=" me-3 my-3 text-end">
-                              <a class="btn btn-success" href="/admin/addBlog"><i
-                                      class=" add material-icons text-sm"></i>&nbsp;&nbsp;Добавить Блог</a>
+                              <a class="btn btn-success" href="/admin/addRewiews"><i
+                                      class=" add material-icons text-sm"></i>&nbsp;&nbsp;Добавить Отзыв</a>
                           </div>
                           <div class="card-body px-0 pb-2">
                               <div class="table-responsive p-0">
@@ -152,6 +76,12 @@
                                               <th
                                                   class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                   НАЗВАНИЕ</th>
+                                                  <th
+                                                  class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                  АВТОР</th>
+                                                  <th
+                                                  class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                  КОНТЕНТ</th>
                                               <th
                                                   class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                   ПОДЗАГОЛОВОК</th>
@@ -183,20 +113,32 @@
       
                                                   </div>
                                               </td>
+                                              <td class="align-middle">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{$blog->author}}</h6>
+    
+                                                </div>
+                                            </td>
+                                              <td class="align-middle">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{$blog->main}}</h6>
+    
+                                                </div>
+                                            </td>
                                               
                                               <td class="align-middle text-center">
                                                   <span class="text-secondary text-xs font-weight-bold">{{$blog->subtitle}}</span>
                                               </td>
                                               <td class="align-middle">
                                                   <a rel="tooltip" class="btn btn-warning"
-                                                      href="/admin/editBlog/{{$blog->id}}" data-original-title=""
+                                                      href="/admin/editRewiews/{{$blog->id}}" data-original-title=""
                                                       title="">
                                                       <i class="material-icons">edit</i>
                                                       <div class="ripple-container"></div>
                                                   </a>
                                                   
                                                   <a rel="tooltip" class="btn btn-danger"
-                                                      href="/admin/deleteBlog/{{$blog->id}}" data-original-title=""
+                                                      href="/admin/deleteRewiews/{{$blog->id}}" data-original-title=""
                                                       title="">
                                                       <i class="material-icons" style="color: white;">delete</i>
                                                       <div class="ripple-container"></div>
@@ -214,6 +156,42 @@
                 </div>
             </div>
         </div>
+        <section class="accordion mt-5" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSEO" aria-expanded="false" aria-controls="collapseOne">
+                      SEO
+                  </button>
+                </h2>
+                <div id="collapseSEO" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                      <form action="/admin/EditSEORewiew" method="POST" class="form-horizontal " style="display: flex;
+                      flex-direction: column;" enctype="multipart/form-data">
+                      @csrf
+                      <div class="form-group">
+                        <label class="col-sm-2 control-label">Мета заголовок</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="focusedInput" name="title" type="text"value="{{$indexpage->metatitlerewiew}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Ключевые слова</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="focusedInput" name="key" type="text"value="{{$indexpage->metakeyrewiew}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Описание</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="focusedInput" name="desc" type="text"value="{{$indexpage->metadescriptionrewiew}}">
+                        </div>
+                    </div>
+                        <button type="submit" class="btn btn-warning col-sm-10">Изменить</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              </section>
     </section>
 </section>
 <!-- Bootstrap JavaScript Libraries -->

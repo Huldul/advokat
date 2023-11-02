@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Изменение товара</title>
+  <title>Изменение главной</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -21,86 +21,19 @@
         <a class="logo" style="margin-right: 30px"> <span class="lite">Admin</span></a>
         <a href="/"class="logo"><span class="lite">На сайт</span></a>
     </header>
-    <aside>
-        <div id="sidebar"  class="nav-collapse ">
-            <!-- sidebar menu start-->
-            <ul class="sidebar-menu">                
-                <li class="">
-                    <a class="" href="/admin/EditIndexPage">
-                        <i class="icon_house_alt"></i>
-                        <span>Изменить главную</span>
-                    </a>
-                </li>
-                <li class="sub-menu">
-                    <a href="/admin/EditAboutPage" class="">
-                        <i class="icon_document_alt"></i>
-                        <span>Изменить о мне</span>
-                        <span class="menu-arrow arrow_carrot-right"></span>
-                    </a>
-                    <ul class="sub">
-                        <li><a class="" href="form_component.html">Form Elements</a></li>                          
-                        <li><a class="" href="form_validation.html">Form Validation</a></li>
-                    </ul>
-                </li>    
-                <li class="sub-menu">
-                    <a href="/admin/EditPractickPage1" class="">
-                        <i class="icon_desktop"></i>
-                        <span>Изменить практики</span>
-                        <span class="menu-arrow arrow_carrot-right"></span>
-                    </a>
-                </li>   
-                <li class="sub-menu">
-                    <a href="/admin/EditRewiewsPage1" class="">
-                        <i class="icon_desktop"></i>
-                        <span>Изменить отзывы</span>
-                        <span class="menu-arrow arrow_carrot-right"></span>
-                    </a>
-                </li>
-                <li>
-                    <a class="" href="/admin/EditBlogPage1">
-                        <i class="icon_genius"></i>
-                        <span>Изменить блоги</span>
-                    </a>
-                </li>
-                <li>                     
-                    <a class="" href="/admin/EditServicePage1">
-                        <i class="icon_piechart"></i>
-                        <span>Изменить сервисы</span>
-                        
-                    </a>
-                                       
-                </li>
-                <li>                     
-                    <a class="" href="/admin/EditContactPage">
-                        <i class="icon_piechart"></i>
-                        <span>Изменить контактную информацию</span>
-                        
-                    </a>
-                                       
-                </li>
-                <li>                     
-                    <a class="" href="FormsPage1">
-                        <i class="icon_piechart"></i>
-                        <span>Заявки</span>
-                        
-                    </a>
-                                       
-                </li>
-                <li>                     
-                    <a class="" href="/admin/ChangePswd">
-                        <i class="icon_piechart"></i>
-                        <span>Изменить пароль</span>
-                        
-                    </a>
-                                       
-                </li>
-            </ul>
-            <!-- sidebar menu end-->
-        </div>
-    </aside>    
+    @include('aside')
   <main>
     <section id="main-content">
         <section class="wrapper">
+            <form action="/admin/EditIndexTitle" method="POST">
+                @csrf
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Заголовок ГЛАВНОЙ</label>
+                    <div class="">
+                        <input class="form-control" id="focusedInput" name="blogtitle" type="text"value="{{$title->indextitle}}">
+                    </div>
+                    <button type="submit" class="btn btn-warning ">Изменить</button>
+                </div></form>
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -158,7 +91,12 @@
                                                           <span class="text-secondary text-xs font-weight-bold">{{$advantage->subtitle}}</span>
                                                       </td>
                                                       <td class="align-middle">
-                                                          
+                                                        <a rel="tooltip" class="btn btn-warning"
+                                                        href="/admin/EditAdvPage/{{$advantage->id}}" data-original-title=""
+                                                        title="">
+                                                        <i class="material-icons">edit</i>
+                                                        <div class="ripple-container"></div>
+                                                    </a>
                                                           <a rel="tooltip" class="btn btn-danger"
                                                               href="/admin/deleteAdvantage/{{$advantage->id}}" data-original-title=""
                                                               title="">
@@ -190,7 +128,7 @@
                                 <div class="card my-4">
                                     <div class=" me-3 my-3 text-end">
                                       <a class="btn btn-success" href="/admin/addPrincipe"><i
-                                              class=" add material-icons text-sm"></i>&nbsp;&nbsp;Добавить приемущество</a>
+                                              class=" add material-icons text-sm"></i>&nbsp;&nbsp;Добавить принцип</a>
                                   </div>
                                   <div class="card-body px-0 pb-2">
                                       <div class="table-responsive p-0">
@@ -221,7 +159,12 @@
                                                           <span class="text-secondary text-xs font-weight-bold">{{$principe->subtitle}}</span>
                                                       </td>
                                                       <td class="align-middle">
-                                                          
+                                                        <a rel="tooltip" class="btn btn-warning"
+                                                        href="/admin/EditPrincipePage/{{$principe->id}}" data-original-title=""
+                                                        title="">
+                                                        <i class="material-icons">edit</i>
+                                                        <div class="ripple-container"></div>
+                                                      </a>
                                                           <a rel="tooltip" class="btn btn-danger"
                                                               href="/admin/deletePrincipe/{{$principe->id}}" data-original-title=""
                                                               title="">
@@ -270,7 +213,19 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">подзаголовок</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" id="focusedInput" style="height: 200px" type="text" name="subtitle">{{$product->subtitle}}</textarea>
+                                <section class="panel">
+                                    <div class="panel-body">
+                                        <div class="form">
+                                            <form action="#" class="form-horizontal">
+                                                <div class="form-group">
+                                                    <div class="col-sm-10">
+                                                        <textarea class="form-control ckeditor" name="subtitle" rows="6">{!!$product->subtitle!!}</textarea>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </section>
                         </div>
                     </div>
                     <div class="form-group">
@@ -299,7 +254,19 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Описание</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" id="focusedInput"  style="height: 200px" name="description" type="text">{{$product->description}}</textarea>
+                                <section class="panel">
+                                    <div class="panel-body">
+                                        <div class="form">
+                                            <form action="#" class="form-horizontal">
+                                                <div class="form-group">
+                                                    <div class="col-sm-10">
+                                                        <textarea class="form-control ckeditor" name="description" rows="6">{!!$product->description!!}</textarea>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </section>
                         </div>
                     </div>
                     <div class="form-group">
@@ -311,7 +278,19 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Описание для консультации</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" id="focusedInput" style="height: 200px" name="subtitle2" type="text">{{$product->subtitle2}}</textarea>
+                                <section class="panel">
+                                    <div class="panel-body">
+                                        <div class="form">
+                                            <form action="#" class="form-horizontal">
+                                                <div class="form-group">
+                                                    <div class="col-sm-10">
+                                                        <textarea class="form-control ckeditor" name="subtitle2" rows="6">{!!$product->subtitle2!!}</textarea>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </section>
                         </div>
                     </div>
                     <div class="form-group">
@@ -325,11 +304,46 @@
                     <button type="submit" class="btn btn-warning col-sm-10">Изменить</button>
                 </form>
             </div>
+                  <section class="accordion mt-5" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSEO" aria-expanded="false" aria-controls="collapseOne">
+                              SEO
+                          </button>
+                        </h2>
+                        <div id="collapseSEO" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                              <form action="/admin/EditSEOIndex" method="POST" class="form-horizontal " style="display: flex;
+                              flex-direction: column;" enctype="multipart/form-data">
+                                @csrf
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Мета заголовок</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" id="focusedInput" name="title" type="text"value="{{$product->metatitleindex}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Ключевые слова</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" id="focusedInput" name="key" type="text"value="{{$product->metakeyindex}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Описание</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" id="focusedInput" name="desc" type="text"value="{{$product->metadescriptionindex}}">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-warning col-sm-10">Изменить</button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                      </section>
         </section>
     </section>
   </main>
   <footer>
-    <!-- place footer here -->
   </footer>
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"

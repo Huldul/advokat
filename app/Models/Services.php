@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Services extends Model
 {
     protected $table ='services';
-    protected $fillable = ['title', 'subtitle'];
+    protected $fillable = ['title', 'subtitle', 'url', 'metatitle', 'metakey', 'metadescription'];
 
     public function subServices()
     {

@@ -30,6 +30,39 @@ return new class extends Migration
             $table->string('practitle');
             $table->string('revtitle');
             $table->string('blogtitle');
+            $table->string('contacttitle');
+            $table->string('indextitle');
+            $table->string('abouttitle');
+            $table->string('servicetitle');
+            
+
+            $table->string('metatitleindex')->nullable();
+            $table->string('metadescriptionindex')->nullable();
+            $table->string('metakeyindex')->nullable();
+
+            $table->string('metatitleabout')->nullable();
+            $table->string('metadescriptionabout')->nullable();
+            $table->string('metakeyabout')->nullable();
+
+            $table->string('metatitlepractick')->nullable();
+            $table->string('metadescriptionpractick')->nullable();
+            $table->string('metakeypractick')->nullable();
+
+            $table->string('metatitlerewiew')->nullable();
+            $table->string('metadescriptionrewiew')->nullable();
+            $table->string('metakeyrewiew')->nullable();
+
+            $table->string('metatitleblog')->nullable();
+            $table->string('metadescriptionblog')->nullable();
+            $table->string('metakeyblog')->nullable();
+
+            $table->string('metatitleservice')->nullable();
+            $table->string('metadescriptionservice')->nullable();
+            $table->string('metakeyservice')->nullable();
+
+            $table->string('metatitlecontact')->nullable();
+            $table->string('metadescriptioncontact')->nullable();
+            $table->string('metakeycontact')->nullable();
 
             $table->timestamps();
         });
@@ -52,6 +85,10 @@ return new class extends Migration
                 'practitle'=> 'ИЗ МОЕЙ ПРАКТИКИ',
                 'revtitle'=> 'ОТЗЫВЫ',
                 'blogtitle'=> 'БЛОГ',
+                'indextitle'=> 'Главная страница',
+                'abouttitle'=>'О мне',
+                'contacttitle'=>'Контакты',
+                'servicetitle'=>'Услуги'
             ]);
         }
     }

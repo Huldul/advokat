@@ -2,13 +2,14 @@
     <div class="container">
         <div class="about__inner">
             <div class="about__info">
-                <h2 class="about__title title title-mb-40">
+                <h2 class="about__title title title-mb-40" style="white-space: pre-line;">
                     {!!$aboutPage->title!!}
                 </h2>
                 <div class="about__descr">
-                    <p>{{$aboutPage->subtitle}}</p>
-                    <blockquote>
-                        {{$aboutPage->subtitle2}}
+                    {{-- @dd($aboutPage->subtitle) --}}
+                    <p style="white-space: pre-line;">{!!$aboutPage->subtitle!!}</p>
+                    <blockquote style="white-space: pre-line;">
+                        {!!$aboutPage->subtitle2!!}
                     </blockquote>
                 </div>
                 <button href="" class="modal__btn btn about__btn" data-modal="modal--2">Оставить заявку

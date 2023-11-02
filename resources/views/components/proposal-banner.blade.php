@@ -8,7 +8,7 @@
                 <button class="modal__btn btn proposal-banner__btn" data-modal="modal--2">Оставить заявку
                     <img src="{{asset('images/arrow-white.svg')}}" alt="">
                 </button>
-                <a href="https://{{$contact->whatsapp}}" class="btn btn-transparent proposal-banner__btn">Перейти в WhatsApp
+                <a href="https://{{$contact->whatsapp}}" target="_blank" class="btn btn-transparent proposal-banner__btn">Перейти в WhatsApp
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="18" viewBox="0 0 25 18" fill="none">
                         <path
                             d="M0.499797 8.99995L23.5011 9.00111M23.5011 9.00111L15.5306 1.03062M23.5011 9.00111L15.5306 16.9716"

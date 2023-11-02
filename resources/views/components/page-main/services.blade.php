@@ -10,10 +10,10 @@
                         0{{$loop->iteration}}
                     </div>
                     <a href="/services">
-                        <h3 class="services__item__title">{{$service->title}}</h3>
+                        <h3 class="services__item__title" style="white-space: pre-line;">{{$service->title}}</h3>
                     </a>
                     <a href="/services">
-                        <p class="services__item__descr">{{$service->subtitle}}</p>
+                        <p class="services__item__descr" style="white-space: pre-line;">{{$service->subtitle}}</p>
                     </a>
                     <a href="/services-single-2/{{$service->id}}" class="services__item__more">Узнать больше
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="18" viewBox="0 0 25 18" fill="none">
@@ -39,10 +39,10 @@
                         {{$loop->iteration}}
                     </div>
                     <a href="/services">
-                        <h3 class="services__item__title">{{$service->title}}</h3>
+                        <h3 class="services__item__title" style="white-space: pre-line;">{{$service->title}}</h3>
                     </a>
                     <a href="/services">
-                        <p class="services__item__descr">{{$service->subtitle}}</p>
+                        <p class="services__item__descr" style="white-space: pre-line;">{{$service->subtitle}}</p>
                     </a>
                     <a href="/services-single-2/{{$service->id}}" class="services__item__more">Узнать больше
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="18" viewBox="0 0 25 18" fill="none">

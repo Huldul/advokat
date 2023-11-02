@@ -19,6 +19,7 @@ use App\Models\AboutPage;
 use App\Models\Sertificate;
 use App\Models\Services;
 use App\Models\Sub_services;
+use Illuminate\Support\Str;
 
 class AdminController extends Controller
 {
@@ -39,8 +40,10 @@ class AdminController extends Controller
     }
     public function EditPractickPage($id){
         $product = Practick::find($id);
+        $indexpage = IndexPage::find(1);
         return view('EditPractickPage',[
             'product' => $product,
+            'indexpage'=> $indexpage,
         ]);
     }
     public function EditPractick(Request $request, $id){
@@ -156,8 +159,10 @@ class AdminController extends Controller
 
     public function EditRewiewsPage($id){
         $product = Rewiews::find($id);
+        $indexpage = IndexPage::find(1);
         return view('EditRewiewsPage',[
             'product' => $product,
+            'indexpage'=> $indexpage,
         ]);
     }
     public function EditRewiews(Request $request, $id){
@@ -203,18 +208,9 @@ class AdminController extends Controller
     }
     public function addRewiews(Request $request){
     // Валидация данных
-    $validator = Validator::make($request->all(), [
-        'title' => 'required|max:255',
-        'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Проверка на изображение
-    ]);
-
-    if ($validator->fails()) {
-        return redirect('/admin/addRewiews')
-                    ->withErrors($validator)
-                    ->withInput();
-    }
 
     // Обработка изображения
+    $fileName = null;
 
     $imagePath = null;
     if ($request->hasFile('image')) {
@@ -224,12 +220,14 @@ class AdminController extends Controller
         $file->move(public_path('images'), $fileName);
     }
 
+    
     // Создание нового товара
     Rewiews::create([
         'title' => $request->input('title'),
         'main' => $request->input('main'),
         'subtitle' => $request->input('subtitle'),
         'image' => $fileName,
+        'author'=>$request->input('author'),
     ]);
 
     return redirect('/admin')->with('success', 'Отзыв успешно добавлен');
@@ -259,8 +257,10 @@ class AdminController extends Controller
 
     public function EditBlogPage($id){
         $blog = Blog::find($id);
+        $indexpage = IndexPage::find(1);
         return view('EditBlogPage',[
             'product' => $blog,
+            'indexpage'=> $indexpage,
         ]);
     }
     public function EditBlog(Request $request, $id){
@@ -285,6 +285,7 @@ class AdminController extends Controller
         $product->title = $request->input('title');
         $product->main = $request->input('main');
         $product->subtitle = $request->input('subtitle');
+        $product->url= Str::slug($request->input('title'), '-');
     
         // Обрабатываем изображение, если оно было загружено
         if ($request->hasFile('image')) {
@@ -333,6 +334,7 @@ class AdminController extends Controller
         'main' => $request->input('main'),
         'subtitle' => $request->input('subtitle'),
         'image' => $fileName,
+        'url'=>Str::slug($request->input('title'), '-')
     ]);
 
     return redirect('/admin')->with('success', 'Блог успешно добавлен');
@@ -354,8 +356,10 @@ class AdminController extends Controller
     }
     public function EditContactPage(){
         $blog = Contact::find(1);
+        $indexpage = IndexPage::find(1);
         return view('EditContactPage',[
             'product' => $blog,
+            'indexpage'=> $indexpage,
         ]);
     }
     public function EditContact(Request $request){
@@ -374,7 +378,7 @@ class AdminController extends Controller
         $contact->instagram = $request->input('inst');
         $contact->title = $request->input('title');
         $contact->subtitle = $request->input('subtitle');
-        $contact->inst_title = $request->input('isnt_title');
+        $contact->inst_title = $request->input('inst_title');
         $contact->inst_subtitle = $request->input('inst_subtitle');
         $contact->licenze = $request->input('licenze');
     
@@ -398,6 +402,8 @@ class AdminController extends Controller
             'product' => $indexpage,
             'advantages' => $advantages,
             'principes' => $principes,
+            'indexpage'=> $indexpage,
+            'title'=>$indexpage,
         ]);
     }
     public function EditIndex(Request $request) {
@@ -463,7 +469,7 @@ class AdminController extends Controller
     public function addPrincipe(Request $request){
     // Валидация данных
     // Создание нового товара
-    Advantages::create([
+    Principes::create([
         'subtitle' => $request->input('subtitle'),
     ]);
 
@@ -472,7 +478,7 @@ class AdminController extends Controller
 
     public function DeletePrincipe($id){
 
-        $product = Advantages::find($id);
+        $product = Principes::find($id);
 
         // Проверяем, найден ли товар
         if (!$product) {
@@ -487,11 +493,14 @@ class AdminController extends Controller
 
 
     public function EditAboutPage(){
+        $indexpage1 = IndexPage::find(1);
         $indexpage = AboutPage::find(1);
         $sertificates = Sertificate::all();
         return view('EditAboutPage',[
             'aboutPage' => $indexpage,
             'sertificates' => $sertificates,
+            'indexpage'=> $indexpage1,
+            'title'=>$indexpage,
         ]);
     }
     public function EditAbout(Request $request) {
@@ -549,8 +558,10 @@ class AdminController extends Controller
 
     public function EditServicePage($id){
         $blog = Services::find($id);
+        $indexpage = IndexPage::find(1);
         return view('EditServicePage',[
             'product' => $blog,
+            'indexpage'=> $indexpage,
         ]);
     }
     public function EditService(Request $request, $id){
@@ -560,6 +571,7 @@ class AdminController extends Controller
         // Обновляем данные товара
         $product->title = $request->input('title');
         $product->subtitle = $request->input('subtitle');
+        $product->url = Str::slug($request->input('title'), '-');
     
     
         // Сохраняем изменения
@@ -577,6 +589,7 @@ class AdminController extends Controller
     Services::create([
         'title' => $request->input('title'),
         'subtitle' => $request->input('subtitle'),
+        'url'=> Str::slug($request->input('title'), '-')
     ]);
 
     return redirect('/admin')->with('success', 'Сервис успешно добавлен');
@@ -613,11 +626,14 @@ class AdminController extends Controller
             $file->move(public_path('images'), $fileName);
         }
     // Создание нового товара
+        
         Sub_services::create([
             'title' => $request->input('title'),
             'description' => $request->input('description'),
             'image' => $fileName,
             'services_id' => $id,
+            'services_url' => Services::find($id)->url,
+
         ]);
 
         return redirect('/admin')->with('success', 'Подсервис успешно добавлен');
@@ -649,13 +665,13 @@ class AdminController extends Controller
 
         // Проверяем, найден ли товар
         if (!$product) {
-            return redirect('/admin')->with('error', 'Форма не найдена');
+            return redirect('/admin')->with('error', 'Заявка не найдена');
         }
 
         // Удаляем товар
         $product->delete();
         
-        return redirect('/admin')->with('success', 'Форма успешно удалена');
+        return redirect('/admin')->with('success', 'Заявка успешно удалена');
     }
 
 
@@ -665,11 +681,14 @@ class AdminController extends Controller
         $blogs = Blog::All();
         $rewiews = Rewiews::All();
         $forms = Form::All();
+        $indexpage = IndexPage::find(1);
         return view('EditServicePage1',[
             'products' => $product,
             'blogs' => $blogs,
             'rewiews' => $rewiews,
             'services' => $services,
+            'indexpage'=> $indexpage,
+            'title'=>$indexpage,
             'forms' => $forms
         ]);
     }
@@ -680,9 +699,11 @@ class AdminController extends Controller
         $title= IndexPage::find(1);
         $rewiews = Rewiews::All();
         $forms = Form::All();
+        $indexpage = IndexPage::find(1);
         return view('EditBlogPage1',[
             'title'=>$title,
             'products' => $product,
+            'indexpage'=> $indexpage,
             'blogs' => $blogs,
             'rewiews' => $rewiews,
             'services' => $services,
@@ -696,12 +717,14 @@ class AdminController extends Controller
         $rewiews = Rewiews::All();
         $title= IndexPage::find(1);
         $forms = Form::All();
+        $indexpage = IndexPage::find(1);
         return view('EditRewiewsPage1',[
             'products' => $product,
-            'blogs' => $blogs,
+            'blogs' => $rewiews,
             'rewiews' => $rewiews,
             'title'=>$title,
             'services' => $services,
+            'indexpage'=> $indexpage,
             'forms' => $forms
         ]);
     }
@@ -712,12 +735,14 @@ class AdminController extends Controller
         $title= IndexPage::find(1);
         $rewiews = Rewiews::All();
         $forms = Form::All();
+        $indexpage = IndexPage::find(1);
         return view('EditPractickPage1',[
             'products' => $product,
             'blogs' => $blogs,
             'title'=>$title,
             'rewiews' => $rewiews,
             'services' => $services,
+            'indexpage'=> $indexpage,
             'forms' => $forms
         ]);
     }
@@ -743,7 +768,7 @@ class AdminController extends Controller
 
         $product->save();
     
-        return redirect('/admin/EditBlogPage1')->with('success', 'Назвнаие успешно обновлено');
+        return redirect('/admin/EditBlogPage1')->with('success', 'Название успешно обновлено');
     }
     public function EditPractickTitle(Request $request){
         $product = IndexPage::findOrFail(1);
@@ -751,7 +776,7 @@ class AdminController extends Controller
 
         $product->save();
     
-        return redirect('/admin/EditPractickPage1')->with('success', 'Назвнаие успешно обновлено');
+        return redirect('/admin/EditPractickPage1')->with('success', 'Название успешно обновлено');
     }
     public function EditRewiewsTitle(Request $request){
         $product = IndexPage::findOrFail(1);
@@ -759,7 +784,158 @@ class AdminController extends Controller
 
         $product->save();
     
-        return redirect('/admin/EditRewiewsPage1')->with('success', 'Назвнаие успешно обновлено');
+        return redirect('/admin/EditRewiewsPage1')->with('success', 'Название успешно обновлено');
+    }
+    public function EditIndexTitle(Request $request){
+        $product = IndexPage::findOrFail(1);
+        $product->indextitle = $request->input('blogtitle');
+
+        $product->save();
+    
+        return redirect('/admin/EditRewiewsPage1')->with('success', 'Название успешно обновлено');
+    }   
+    public function EditAboutTitle(Request $request){
+        $product = IndexPage::findOrFail(1);
+        $product->abouttitle = $request->input('blogtitle');
+
+        $product->save();
+    
+        return redirect('/admin/EditRewiewsPage1')->with('success', 'Название успешно обновлено');
+    }      
+
+    public function EditServiceTitle(Request $request){
+        $product = IndexPage::findOrFail(1);
+        $product->servicetitle = $request->input('servicetitle');
+
+        $product->save();
+    
+        return redirect('/admin/EditServicePage1')->with('success', 'Название успешно обновлено');
+    } 
+    public function EditContactTitle(Request $request){
+        $product = IndexPage::findOrFail(1);
+        $product->contacttitle = $request->input('contacttitle');
+
+        $product->save();
+    
+        return redirect('/admin/EditContactPage')->with('success', 'Название успешно обновлено');
+    } 
+
+
+    public function EditSEOAbout(Request $request){
+        $product = IndexPage::findOrFail(1);
+        $product->metatitleabout = $request->input('title');
+        $product->metakeyabout = $request->input('key');
+        $product->metadescriptionabout = $request->input('desc');
+
+        $product->save();
+
+        return redirect('/admin')->with('success', 'meta успешно измененны');
+    }
+    public function EditSEOPractick(Request $request){
+        $product = IndexPage::findOrFail(1);
+        $product->metatitlepractick = $request->input('title');
+        $product->metakeypractick = $request->input('key');
+        $product->metadescriptionpractick = $request->input('desc');
+
+        $product->save();
+        return redirect('/admin')->with('success', 'meta успешно измененны');
+    }
+    public function EditSEORewiew(Request $request){
+        $product = IndexPage::findOrFail(1);
+        $product->metatitlerewiew = $request->input('title');
+        $product->metakeyrewiew = $request->input('key');
+        $product->metadescriptionrewiew = $request->input('desc');
+
+        $product->save();
+        return redirect('/admin')->with('success', 'meta успешно измененны');
+    }
+    public function EditSEOBlog(Request $request){
+        $product = IndexPage::findOrFail(1);
+        $product->metatitleblog = $request->input('title');
+        $product->metakeyblog = $request->input('key');
+        $product->metadescriptionblog = $request->input('desc');
+
+        $product->save();
+        return redirect('/admin')->with('success', 'meta успешно измененны');
+    }
+    public function EditSEOService(Request $request){
+        $product = IndexPage::findOrFail(1);
+        $product->metatitleservice = $request->input('title');
+        $product->metakeyservice = $request->input('key');
+        $product->metadescriptionservice = $request->input('desc');
+
+        $product->save();
+        return redirect('/admin')->with('success', 'meta успешно измененны');
+    }
+    public function EditSEOContact(Request $request){
+        $product = IndexPage::findOrFail(1);
+        $product->metatitlecontact = $request->input('title');
+        $product->metakeycontact = $request->input('key');
+        $product->metadescriptioncontact = $request->input('desc');
+
+        $product->save();
+        return redirect('/admin')->with('success', 'meta успешно измененны');
+    }
+    public function EditSEOIndex(Request $request){
+        $product = IndexPage::findOrFail(1);
+        $product->metatitleindex = $request->input('title');
+        $product->metakeyindex = $request->input('key');
+        $product->metadescriptionindex = $request->input('desc');
+
+        $product->save();
+        return redirect('/admin')->with('success', 'meta успешно измененны');
+    }
+
+    public function EditSEOBlog1(Request $request, $id){
+        $product = Blog::find($id);
+        $product->metatitle = $request->input('title');
+        $product->metakey = $request->input('key');
+        $product->metadescription = $request->input('desc');
+
+        $product->save();
+        return redirect('/admin')->with('success', 'meta успешно измененны');
+    }
+    public function EditSEOService1(Request $request, $id){
+        $product = Services::find($id);
+        $product->metatitle = $request->input('title');
+        $product->metakey = $request->input('key');
+        $product->metadescription = $request->input('desc');
+
+        $product->save();
+        return redirect('/admin')->with('success', 'meta успешно измененны');
+    }
+
+    public function EditPrincipes(Request $request, $id) {
+        
+    
+        $product = Principes::Find($id);
+        $product->subtitle = $request->input('subtitle');
+    
+        $product->save();
+    
+        return redirect('/admin')->with('success', 'Успешно обновлен');
+    } 
+    public function EditAdv(Request $request, $id) {
+        
+    
+        $product = Advantages::Find($id);
+        $product->subtitle = $request->input('subtitle');
+    
+        $product->save();
+    
+        return redirect('/admin')->with('success', 'Успешно обновлен');
+    } 
+    public function EditPrincipesPage($id){
+        $blog = Principes::find($id);
+        return view('EditPrincipes',[
+            'product' => $blog,
+        ]);
+    }
+    public function EditAdvPage($id){
+        $blog = Advantages::find($id);
+        return view('EditAdv',[
+            'product' => $blog,
+        ]);
     }
 }
 

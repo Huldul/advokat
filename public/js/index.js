@@ -91,23 +91,23 @@ document.addEventListener('DOMContentLoaded', ()=>{
     // Модальное окно
     function bindModal(trigger, modal, close) {
         const triggers = document.querySelectorAll(trigger),
-              closeBtn = document.querySelector(close);
+            closeBtn = document.querySelector(close);
     
-        triggers.forEach(element => {
+            triggers ? triggers.forEach(element => {
             element.addEventListener('click', e => {
                 e.preventDefault();
                 const modalId = element.dataset.modal; // Получаем значение атрибута data-modal
                 const targetModal = document.getElementById(modalId); // Получаем соответствующее модальное окно
                 targetModal.style.display = 'flex';
             });
-        });
+        }) : "";
     
-        closeBtn.addEventListener('click', () => {
+            closeBtn ?  closeBtn.addEventListener('click', () => {
             const modals = document.querySelectorAll(modal); // Получаем все модальные окна
             modals.forEach(modal => {
                 modal.style.display = 'none'; // Закрываем все модальные окна
             });
-        });
+        }) : "";
     } 
     
     bindModal('.modal__info__open', '.modal__wrapper', '.modal__close');
@@ -115,6 +115,20 @@ document.addEventListener('DOMContentLoaded', ()=>{
     bindModal('.fixed-contact', '.modal__wrapper3', '.modal__close3');
     bindModal('.modal__info__open', '.modal__wrapper3', '.modal__close3');
     $('input[type="tel"]').mask("+7 (999) 999-99-99");  
+    // loader func
+    function submitForm() {
+        $('#form_loader').show();
+    }
+    //Alert form
+    let alertt = document.querySelector(".alert--fixed");
+    let alertClose = document.querySelectorAll(".alert--close")
+    for (let item of alertClose) {
+        item.addEventListener('click', function(event) {
+            alertt.classList.remove("alert--active")
+            alertt.classList.remove("alert--warning")
+            alertt.classList.remove("alert--error")
+        })
+    }
 })
 function closeModal() {
     const modals = document.querySelectorAll('.modal__wrapper'); // Получаем все модальные окна

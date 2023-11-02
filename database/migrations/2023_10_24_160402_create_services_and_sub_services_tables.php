@@ -15,18 +15,26 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('subtitle');
+            $table->string('url')->unique();
+
+            $table->string('metatitle')->nullable();
+            $table->string('metakey')->nullable();
+            $table->string('metadescription')->nullable();
+
             $table->timestamps();
         });
 
         Schema::create('sub_services', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('services_id');
+            $table->string('services_url');
             $table->string('title');
             $table->string('image');
             $table->text('description');
             $table->timestamps();
 
             $table->foreign('services_id')->references('id')->on('services')->onDelete('cascade');
+            $table->foreign('services_url')->references('url')->on('services')->onDelete('cascade');
         });
     }
 

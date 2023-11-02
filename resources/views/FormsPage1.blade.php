@@ -24,83 +24,7 @@
         <a class="logo" style="margin-right: 30px"> <span class="lite">Admin</span></a>
         <a href="/"class="logo"><span class="lite">На сайт</span></a>
     </header>
-    <aside>
-        <div id="sidebar"  class="nav-collapse ">
-            <!-- sidebar menu start-->
-            <ul class="sidebar-menu">                
-                <li class="">
-                    <a class="" href="/admin/EditIndexPage">
-                        <i class="icon_house_alt"></i>
-                        <span>Изменить главную</span>
-                    </a>
-                </li>
-                <li class="sub-menu">
-                    <a href="/admin/EditAboutPage" class="">
-                        <i class="icon_document_alt"></i>
-                        <span>Изменить о мне</span>
-                        <span class="menu-arrow arrow_carrot-right"></span>
-                    </a>
-                    <ul class="sub">
-                        <li><a class="" href="form_component.html">Form Elements</a></li>                          
-                        <li><a class="" href="form_validation.html">Form Validation</a></li>
-                    </ul>
-                </li>    
-                <li class="sub-menu">
-                    <a href="/admin/EditPractickPage1" class="">
-                        <i class="icon_desktop"></i>
-                        <span>Изменить практики</span>
-                        <span class="menu-arrow arrow_carrot-right"></span>
-                    </a>
-                </li>   
-                <li class="sub-menu">
-                    <a href="/admin/EditRewiewsPage1" class="">
-                        <i class="icon_desktop"></i>
-                        <span>Изменить отзывы</span>
-                        <span class="menu-arrow arrow_carrot-right"></span>
-                    </a>
-                </li>
-                <li>
-                    <a class="" href="/admin/EditBlogPage1">
-                        <i class="icon_genius"></i>
-                        <span>Изменить блоги</span>
-                    </a>
-                </li>
-                <li>                     
-                    <a class="" href="/admin/EditServicePage1">
-                        <i class="icon_piechart"></i>
-                        <span>Изменить сервисы</span>
-                        
-                    </a>
-                                       
-                </li>
-                <li>                     
-                    <a class="" href="/admin/EditContactPage">
-                        <i class="icon_piechart"></i>
-                        <span>Изменить контактную информацию</span>
-                        
-                    </a>
-                                       
-                </li>
-                <li>                     
-                    <a class="" href="FormsPage1">
-                        <i class="icon_piechart"></i>
-                        <span>Заявки</span>
-                        
-                    </a>
-                                       
-                </li>
-                <li>                     
-                    <a class="" href="/admin/ChangePswd">
-                        <i class="icon_piechart"></i>
-                        <span>Изменить пароль</span>
-                        
-                    </a>
-                                       
-                </li>
-            </ul>
-            <!-- sidebar menu end-->
-        </div>
-    </aside>    
+    @include('aside')
 
     <section id="main-content">
         <!-- Navbar -->
@@ -119,94 +43,72 @@
             @endif
             <div class="accordion-item">
                 <div class=" me-3 my-3">
-                    <h3 class="page-header" >Сервисы</h3>
+                    <h3 class="page-header" >Заявки</h3>
                 </div>
                   <div class="accordion-body">
                       <div class="row">
-                        <div class="card my-4">
-                            <div class=" me-3 my-3 text-end">
-                              <a class="btn btn-success" href="/admin/addBlog"><i
-                                      class=" add material-icons text-sm"></i>&nbsp;&nbsp;Добавить Блог</a>
-                          </div>
-                          <div class="card-body px-0 pb-2">
-                              <div class="table-responsive p-0">
-                                  <table class="table align-items-center mb-0">
-                                      <thead>
-                                          <tr>
-                                              <th
-                                                  class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                  ID
-                                              </th>
-                                              <th
-                                                  class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                  ФОТО</th>
-                                              <th
-                                                  class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                                  НАЗВАНИЕ</th>
-                                              <th
-                                                  class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                  АВТОР </th>
-                                              <th
-                                                  class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                  ПОДЗАГОЛОВОК</th>
-                                              <th class="text-secondary opacity-7"></th>
-                                          </tr>
-                                      </thead>
-                                      @foreach ($blogs as $blog)
-                                      <tbody>
-                                          <tr>
-                                              <td>
-                                                  <div class="d-flex px-2 py-1">
-                                                      <div class="d-flex flex-column justify-content-center">
-                                                          <p class="mb-0 text-sm">{{$blog->id}}</p>
-                                                      </div>
-                                                  </div>
-                                              </td>
-                                              <td>
-                                                  <div class="d-flex px-2 py-1">
-                                                      <div>
-                                                          <img src="{{asset('images/'.$blog->image)}}"
-                                                              class="avatar avatar-sm me-3 border-radius-lg" style="width: 300px" alt="user1">
-                                                      </div>
-      
-                                                  </div>
-                                              </td>
-                                              <td class="alight-center">
-                                                  <div class="d-flex flex-column justify-content-center">
-                                                      <h6 class="mb-0 text-sm">{{$blog->title}}</h6>
-      
-                                                  </div>
-                                              </td>
-                                              <td class="align-middle text-center text-sm">
-                                                  <p class="text-xs text-secondary mb-0">{{$blog->author}}
-                                                  </p>
-                                              </td>
-                                              <td class="align-middle text-center">
-                                                  <span class="text-secondary text-xs font-weight-bold">{{$blog->subtitle}}</span>
-                                              </td>
-                                              <td class="align-middle">
-                                                  <a rel="tooltip" class="btn btn-warning mb-2"
-                                                      href="/admin/editBlog/{{$blog->id}}" data-original-title=""
-                                                      title="">
-                                                      <i class="material-icons">edit</i>
-                                                      <div class="ripple-container"></div>
-                                                  </a>
-                                                  
-                                                  <a rel="tooltip" class="btn btn-danger"
-                                                      href="/admin/deleteBlog/{{$blog->id}}" data-original-title=""
-                                                      title="">
-                                                      <i class="material-icons" style="color: white;">delete</i>
-                                                      <div class="ripple-container"></div>
-                                                  </a>
-                                              </td>
-                                          </tr>
-                                      </tbody>
-                                      @endforeach
-                                  </table>
+                        <div class="accordion-item mt-4 container-fluid py-4">
+                        <div class="row mb-2" style="display: flex;justify-content: center;">
+                            <div class="card-body px-0 pb-2">
+                                <div class="table-responsive p-0">
+                                    <table class="table align-items-center mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th
+                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                    ID
+                                                </th>
+                                                <th
+                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                    ИМЯ</th>
+                                                <th
+                                                    class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                    НОМЕР</th>
+                                                    <th
+                                                    class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                        ВРЕМЯ ДОБАВЛЕНИЯ</th>
+                                                <th class="text-secondary opacity-7"></th>
+                                            </tr>
+                                        </thead>
+                                        @foreach ($forms as $product)
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1">
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            <p class="mb-0 text-sm">{{$product->id}}</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex flex-column justify-content-center">
+                                                        <h6 class="mb-0 text-sm">{{$product->name}}</h6>
+
+                                                    </div>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">{{$product->number}}</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">{{$product->created_at}}</span>
+                                                </td>
+                                                <td class="align-middle">
+                                                    <a rel="tooltip" class="btn btn-danger"
+                                                        href="/admin/deleteForm/{{$product->id}}" data-original-title=""
+                                                        title="">
+                                                        <i class="material-icons" style="color: white;">delete</i>
+                                                        <div class="ripple-container"></div>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        @endforeach
+                                    </table>
                                 </div>
-                          </div>  
+                            </div>  
+                          </div>
                         </div>
-                    </div>
+                        </div>
                     </div>
                 </div>
             </div>

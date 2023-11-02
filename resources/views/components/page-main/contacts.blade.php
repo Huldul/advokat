@@ -7,7 +7,7 @@
     <div class="container">
         <div class="contacts__inner">
             <h2 class="contacts__title title">{{$contact->title}}</h2>
-            <p class="contacts__descr">
+            <p class="contacts__descr" style="white-space: pre-line;">
                 {{$contact->subtitle}}
             </p>
             <a href="" class="modal__btn btn contacts__btn" data-modal="modal--2">Оставить заявку

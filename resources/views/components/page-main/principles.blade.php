@@ -15,7 +15,7 @@
                             </svg>
                         </div>
                         <div class="principles__item__descr">
-                            {{$principe->subtitle}}>
+                            <p style="white-space: pre-line;">{{$principe->subtitle}}</p>
                         </div>
                     </div>
                     @endforeach

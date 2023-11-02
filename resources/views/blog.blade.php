@@ -4,7 +4,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Блог</title>
+    <title>{{$indexPage->blogtitle}}</title>
+
+    <meta name="title" content="{{$indexPage->metatitleblog}}">
+    <meta name="description" content="{{$indexPage->metadescriptionblog}}">
+    <meta name="keywords" content="{{$indexPage->metakeyblog}}">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -6,13 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Услуги</title>
 
+    <meta name="title" content="{{$services->metatitle}}">
+    <meta name="description" content="{{$services->metadescription}}">
+    <meta name="keywords" content="{{$services->metakey}}">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Oswald:wght@500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="{{asset('css/style.css?v=1.03')}}" />
+    <link rel="stylesheet" href="{{asset('css/style.css?v=2.03')}}" />
 </head>
 
 <body>

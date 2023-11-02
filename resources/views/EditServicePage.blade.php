@@ -16,12 +16,17 @@
 </head>
 
 <body>
-  <header>
-    <!-- place navbar here -->
-  </header>
+    <header class="header dark-bg">
+        
+
+        <!--logo start-->
+        <a class="logo" style="margin-right: 30px"> <span class="lite">Admin</span></a>
+        <a href="/"class="logo"><span class="lite">На сайт</span></a>
+    </header>
+    @include('aside')
   <main>
-    <div class="container">
-        <div class="wrapper">
+    <section id="main-content">
+        <section class="wrapper">
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -56,8 +61,43 @@
                     <button type="submit" class="btn btn-warning col-sm-10">Изменить</button>
                 </form>
             </div>
-        </div>
-    </div>
+            <section class="accordion mt-5" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSEO" aria-expanded="false" aria-controls="collapseOne">
+                          SEO
+                      </button>
+                    </h2>
+                    <div id="collapseSEO" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                          <form action="/admin/EditSEOService1/{{$product->id}}" method="POST" class="form-horizontal " style="display: flex;
+                          flex-direction: column;" enctype="multipart/form-data">@csrf
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Мета заголовок</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="focusedInput" name="title" type="text"value="{{$product->metatitle}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Ключевые слова</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="focusedInput" name="key" type="text"value="{{$product->metakey}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Описание</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="focusedInput" name="desc" type="text"value="{{$product->metadescription}}">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-warning col-sm-10">Изменить</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  </section>
+        </section>
+    </section>
   </main>
   <footer>
     <!-- place footer here -->

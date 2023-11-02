@@ -6,7 +6,7 @@
             </div>
             <div class="mission__text">
                 <h2 class="mission__title title title-mb-40">{{$indexPage->name}}</h2>
-                <p class="mission__descr">{{$indexPage->description}}</p>
+                <p class="mission__descr" style="white-space: pre-line;">{{$indexPage->description}}</p>
                 <a href="about" class="btn mission__btn">Подробнее
                     <img src="images/arrow-white.svg" alt="">
                 </a>

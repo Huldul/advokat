@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Изменение товара</title>
+  <title>Изменение практик</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,12 +16,17 @@
 </head>
 
 <body>
-  <header>
-    <!-- place navbar here -->
-  </header>
+    <header class="header dark-bg">
+        
+
+        <!--logo start-->
+        <a class="logo" style="margin-right: 30px"> <span class="lite">Admin</span></a>
+        <a href="/"class="logo"><span class="lite">На сайт</span></a>
+    </header>
+    @include('aside')
   <main>
-    <div class="container">
-        <div class="wrapper">
+    <section id="main-content">
+        <section class="wrapper">
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -73,8 +78,8 @@
                     <button type="submit" class="btn btn-warning col-sm-10">Изменить</button>
                 </form>
             </div>
-        </div>
-    </div>
+        </section>
+    </section>
   </main>
   <footer>
     <!-- place footer here -->

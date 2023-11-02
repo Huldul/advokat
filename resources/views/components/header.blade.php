@@ -33,10 +33,10 @@
             </nav>
             <div class="header-actions">
                 <div class="header-actions__socials">
-                    <a class="header-actions__socials__item" href="https://{{$contact->instagram}}">
+                    <a class="header-actions__socials__item" target="_blank" href="https://{{$contact->instagram}}">
                         <img src="{{asset('images/inst-icon.svg')}}" alt="">
                     </a>
-                    <a class="header-actions__socials__item" href="https://{{$contact->facebook}}">
+                    <a class="header-actions__socials__item" target="_blank" href="https://{{$contact->facebook}}">
                         <img src="{{asset('images/facebook-icon.svg')}}" alt="">
                     </a>
                 </div>

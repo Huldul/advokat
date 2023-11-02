@@ -17,6 +17,11 @@ return new class extends Migration
             $table->string("image");
             $table->text("main");
             $table->string('subtitle', 255);
+            $table->string('url')->unique();
+
+            $table->string('metatitle')->nullable();
+            $table->string('metakey')->nullable();
+            $table->string('metadescription')->nullable();
 
             $table->timestamps();
         });

@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Mail;
 use Symfony\Component\Mailer\Bridge\Mailgun\Transport\MailgunTransportFactory;
 use Exception;
 use App\Models\Form;
+use App\Models\Contact;
+use App\Models\IndexPage;
 
 
 class PageController extends Controller
@@ -29,19 +31,17 @@ class PageController extends Controller
             return redirect('/login')->with('error', 'Неверные учетные данные');
         }
     }
-    public function blog($id){
-        $blog = Blog::find($id);
-        return view('blog-single', compact('blog'));
+    public function blog($url){
+        $blog = Blog::Where('url', $url)->first();
+        $contact = Contact::find(1);
+        $indexPage = IndexPage::find(1);
+        return view('blog-single', [
+            'blog'=>$blog,
+            'contact'=>$contact,
+            'indexPage'=>$indexPage
+        ]);
     }
     public function sendRequest(Request $request){
-        try{
-            $name = $request->input('name');
-            $number = $request->input('number');
-        }catch (Exception $e) {
-            // Обработка ошибки
-            
-        }
-
         Form::Create([
             'name' => $request->input('name'),
             'number' => $request->input('number'),

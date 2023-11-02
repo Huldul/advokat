@@ -2,7 +2,7 @@
     <div class="container">
         <div class="hero__inner">
             <h1 class="hero__title">{{$indexPage->title}}</h1>
-            <p class="hero__subtitle">{{$indexPage->subtitle}}</p>
+            <p class="hero__subtitle" style="white-space: pre-line;">{{$indexPage->subtitle}}</p>
             <button class="modal__btn btn hero__btn" data-modal="modal--2">Оставить заявку
                 <img src="images/arrow-white.svg" alt="">
             </button>

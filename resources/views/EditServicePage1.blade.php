@@ -24,83 +24,7 @@
         <a class="logo" style="margin-right: 30px"> <span class="lite">Admin</span></a>
         <a href="/"class="logo"><span class="lite">На сайт</span></a>
     </header>
-    <aside>
-        <div id="sidebar"  class="nav-collapse ">
-            <!-- sidebar menu start-->
-            <ul class="sidebar-menu">                
-                <li class="">
-                    <a class="" href="/admin/EditIndexPage">
-                        <i class="icon_house_alt"></i>
-                        <span>Изменить главную</span>
-                    </a>
-                </li>
-                <li class="sub-menu">
-                    <a href="/admin/EditAboutPage" class="">
-                        <i class="icon_document_alt"></i>
-                        <span>Изменить о мне</span>
-                        <span class="menu-arrow arrow_carrot-right"></span>
-                    </a>
-                    <ul class="sub">
-                        <li><a class="" href="form_component.html">Form Elements</a></li>                          
-                        <li><a class="" href="form_validation.html">Form Validation</a></li>
-                    </ul>
-                </li>    
-                <li class="sub-menu">
-                    <a href="/admin/EditPractickPage1" class="">
-                        <i class="icon_desktop"></i>
-                        <span>Изменить практики</span>
-                        <span class="menu-arrow arrow_carrot-right"></span>
-                    </a>
-                </li>   
-                <li class="sub-menu">
-                    <a href="/admin/EditRewiewsPage1" class="">
-                        <i class="icon_desktop"></i>
-                        <span>Изменить отзывы</span>
-                        <span class="menu-arrow arrow_carrot-right"></span>
-                    </a>
-                </li>
-                <li>
-                    <a class="" href="/admin/EditBlogPage1">
-                        <i class="icon_genius"></i>
-                        <span>Изменить блоги</span>
-                    </a>
-                </li>
-                <li>                     
-                    <a class="" href="/admin/EditServicePage1">
-                        <i class="icon_piechart"></i>
-                        <span>Изменить сервисы</span>
-                        
-                    </a>
-                                       
-                </li>
-                <li>                     
-                    <a class="" href="/admin/EditContactPage">
-                        <i class="icon_piechart"></i>
-                        <span>Изменить контактную информацию</span>
-                        
-                    </a>
-                                       
-                </li>
-                <li>                     
-                    <a class="" href="FormsPage1">
-                        <i class="icon_piechart"></i>
-                        <span>Заявки</span>
-                        
-                    </a>
-                                       
-                </li>
-                <li>                     
-                    <a class="" href="/admin/ChangePswd">
-                        <i class="icon_piechart"></i>
-                        <span>Изменить пароль</span>
-                        
-                    </a>
-                                       
-                </li>
-            </ul>
-            <!-- sidebar menu end-->
-        </div>
-    </aside>    
+    @include('aside')
 
     <section id="main-content">
         <!-- Navbar -->
@@ -117,6 +41,15 @@
                     {{ session('error') }}
                 </div>
             @endif
+            <form action="/admin/EditServiceTitle" method="POST">
+                @csrf
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Заголовок УСЛУГ</label>
+                    <div class="">
+                        <input class="form-control" id="focusedInput" name="servicetitle" type="text"value="{{$title->servicetitle}}">
+                    </div>
+                    <button type="submit" class="btn btn-warning ">Изменить</button>
+                </div></form>
             <div class=" me-3 my-3">
                 <h3 class="page-header" >Сервисы</h3>
             </div>
@@ -214,6 +147,42 @@
                 </div>
             </div>
         </div>
+        <section class="accordion mt-5" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSEO" aria-expanded="false" aria-controls="collapseOne">
+                      SEO
+                  </button>
+                </h2>
+                <div id="collapseSEO" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                      <form action="/admin/EditSEOService" method="POST" class="form-horizontal " style="display: flex;
+                      flex-direction: column;" enctype="multipart/form-data">
+                      @csrf
+                      <div class="form-group">
+                        <label class="col-sm-2 control-label">Мета заголовок</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="focusedInput" name="title" type="text"value="{{$indexpage->metatitleservice}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Ключевые слова</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="focusedInput" name="key" type="text"value="{{$indexpage->metakeyservice}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Описание</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="focusedInput" name="desc" type="text"value="{{$indexpage->metadescriptionservice}}">
+                        </div>
+                    </div>
+                        <button type="submit" class="btn btn-warning col-sm-10">Изменить</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              </section>
     </section>
 </section>
 <!-- Bootstrap JavaScript Libraries -->

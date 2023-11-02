@@ -15,7 +15,7 @@
                     <a href="/services">
                         <p class="services__item__descr">{{$service->subtitle}}</p>
                     </a>
-                    <a href="/services-single-2/{{$service->id}}" class="services__item__more">Узнать больше
+                    <a href="/services-single-2/{{$service->url}}" class="services__item__more">Узнать больше
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="18" viewBox="0 0 25 18" fill="none">
                             <path
                                 d="M0.499797 8.99995L23.5011 9.00111M23.5011 9.00111L15.5306 1.03062M23.5011 9.00111L15.5306 16.9716"
@@ -44,7 +44,7 @@
                     <a href="/services">
                         <p class="services__item__descr">{{$service->subtitle}}</p>
                     </a>
-                    <a href="/services-single-2/{{$service->id}}" class="services__item__more">Узнать больше
+                    <a href="/services-single-2/{{$service->url}}" class="services__item__more">Узнать больше
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="18" viewBox="0 0 25 18" fill="none">
                             <path
                                 d="M0.499797 8.99995L23.5011 9.00111M23.5011 9.00111L15.5306 1.03062M23.5011 9.00111L15.5306 16.9716"

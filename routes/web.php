@@ -51,7 +51,7 @@ Route::middleware('admin')->group(function () {
     Route::get('admin/EditContactPage', [AdminController::class, "EditContactPage"]);
     Route::post('admin/editContact', [AdminController::class, "EditContact"]);
 
-    Route::get('admin/changePswd', [AdminController::class, "ChangePswd"]);
+    Route::get('admin/СhangePswd', [AdminController::class, "ChangePswd"]);
     Route::post('admin/change', [AdminController::class, "Change"]);
 
 
@@ -96,14 +96,39 @@ Route::middleware('admin')->group(function () {
     Route::get('admin/EditRewiewsPage1', [AdminController::class, "EditRewiewsPage1"]);
     Route::get('admin/EditPractickPage1', [AdminController::class, "EditPractickPage1"]);
     Route::get('admin/FormsPage1', [AdminController::class, "FormsPage1"]);
+
     Route::post('admin/EditBlogTitle', [AdminController::class, "EditBlogTitle"]);
     Route::post('admin/EditRewiewsTitle', [AdminController::class, "EditRewiewsTitle"]);
     Route::post('admin/EditPractickTitle', [AdminController::class, "EditPractickTitle"]);
+    Route::post('admin/EditIndexTitle', [AdminController::class, "EditIndexTitle"]);
+    Route::post('admin/EditAboutTitle', [AdminController::class, "EditAboutTitle"]);
+    Route::post('admin/EditServiceTitle', [AdminController::class, "EditServiceTitle"]);
+    Route::post('admin/EditContactTitle', [AdminController::class, "EditContactTitle"]);
 
+    Route::post('admin/EditSEOIndex', [AdminController::class, "EditSEOIndex"]);
+    Route::post('admin/EditSEOAbout', [AdminController::class, "EditSEOAbout"]);
+    Route::post('admin/EditSEOPractick', [AdminController::class, "EditSEOPractick"]);
+    Route::post('admin/EditSEORewiew', [AdminController::class, "EditSEORewiew"]);
+    Route::post('admin/EditSEOBlog', [AdminController::class, "EditSEOBlog"]);
+    Route::post('admin/EditSEOService', [AdminController::class, "EditSEOService"]);
+    Route::post('admin/EditSEOContact', [AdminController::class, "EditSEOContact"]);
+
+    Route::post('admin/EditSEOBlog1/{id}', [AdminController::class, "EditSEOBlog1"]);
+    Route::post('admin/EditSEOService1/{id}', [AdminController::class, "EditSEOService1"]);
+
+    Route::get('admin/EditAdvPage/{id}', [AdminController::class, "EditAdvPage"]);
+    Route::get('admin/EditPrincipePage/{id}', [AdminController::class, "EditPrincipesPage"]);
+
+    Route::post('admin/EditAdv/{id}', [AdminController::class, "EditAdv"]);
+    Route::post('admin/EditPrincipes/{id}', [AdminController::class, "EditPrincipes"]);
+    
 });
 Route::get('/login', [PageController::class, "LoginPage"])->name('login');
 Route::post('login/checkPswd', [PageController::class, "CheckPswd"]);
-
+Route::get('/back', function(){
+    $referer = request()->headers->get('referer');
+    return redirect($referer);
+});
 Route::get('/', function(){
     $contact = Contact::find(1);
     $indexPage = IndexPage::find(1);
@@ -142,14 +167,14 @@ Route::get('/services', function(){
         'services'=> $services
     ]);
 });
-Route::get('/services-single-2/{id}', function($id){
+Route::get('/services-single-2/{url}', function($url){
     $contact = Contact::find(1);
     $indexPage = IndexPage::find(1);
-    $subservices = Sub_services::Where('services_id', $id)->get();
-    $services = Services::find($id);
+    $subservices = Sub_services::Where('services_url', $url)->get();
+    $services = Services::Where('url' ,$url)->first();
     return view('services-single-2',[
         'contact'=>$contact,
-        'indexPage' => $indexPage,
+        'indexPage' => $indexPage, 
         'subservices'=> $subservices,
         'services'=> $services
     ]);
@@ -192,5 +217,5 @@ Route::get('/contacts', function(){
         'indexPage' => $indexPage,
     ]);
 });
-Route::get('/blog-single/{id}', [PageController::class, "blog"]);
+Route::get('/blog-single/{url}', [PageController::class, "blog"]);
 Route::post('/sendmail', [PageController::class, "sendRequest"]);

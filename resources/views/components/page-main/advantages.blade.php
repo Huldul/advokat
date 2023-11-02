@@ -1,3 +1,4 @@
+
 <section class="advantages">
     <div class="container">
         <div class="advantages__inner">
@@ -27,7 +28,7 @@
                             </defs>
                         </svg>
                     </div>
-                    <p class="advantages__item__descr">{{$advantage->subtitle}}</p>
+                    <p class="advantages__item__descr" style="white-space: pre-line;">{{$advantage->subtitle}}</p>
                 </div>
                 @endforeach
             </div>
